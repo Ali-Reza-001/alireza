@@ -29,7 +29,7 @@ const Layout = () => {
                 <Aside open={open} setOpen={setOpen} />
             </aside>
             <main className="w-full font-en">
-                
+                {/* isPC && <Cursor/> */}
                 <Outlet/>
                 <SocialSidebar/>
             </main>

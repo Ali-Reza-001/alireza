@@ -58,7 +58,7 @@ const SocialSidebar = () => {
     
     
     return (
-        <div className='w-20 h-screen absolute top-0 right-0 z-[10] text-[rgba(255,255,255,0.5)] text-4xl flex flex-col flex-wrap align-middle justify-center'>
+        <div className='w-20 h-screen absolute top-0 right-0 z-[10] text-[rgba(255,255,255,0.5)] text-4xl flex flex-col flex-wrap align-middle justify-center overflow-hidden'>
             {icons.map(icon => <SocialIcon Data={icon} key={icon.link} />)}
         </div>
     )
