@@ -1,10 +1,11 @@
-import { FaArrowRightLong, FaFacebook, FaFreeCodeCamp, FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6"
+import {  FaFacebook,  FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6"
 import { SiFreelancer } from "react-icons/si";
-import { FaPaperPlane, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoMail } from "react-icons/io5";
 import { MdPhoneAndroid } from "react-icons/md";
 import { BiSolidMap } from "react-icons/bi";
+
+import social from "../../data/social";
 
 
 const Footer = () => {
@@ -57,11 +58,11 @@ const Footer = () => {
         <div className="w-full flex items-center">
             <hr className="w-full h-[2px] bg-white/50"/>
             <div className=" flex justify-around mx-8">
-                <a href="https://facebook.com" aria-label="facebook"><FaFacebook className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
-                <a href="https://whatsapp.com" aria-label="whatsapp"><FaWhatsapp className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
-                <a href="https://linkedin.com" aria-label="linkedin"><FaLinkedin className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
-                <a href="https://github.com" aria-label="github"><FaGithub className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
-                <a href="https://freelancer.com" aria-label="freelancer"><SiFreelancer className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.facebook} aria-label="facebook"><FaFacebook className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.whatsapp} aria-label="whatsapp"><FaWhatsapp className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.linkedin} aria-label="linkedin"><FaLinkedin className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.github} aria-label="github"><FaGithub className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.freelancer} aria-label="freelancer"><SiFreelancer className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
             </div>
             <hr className="w-full h-[2px] bg-white/50"/>
         </div>

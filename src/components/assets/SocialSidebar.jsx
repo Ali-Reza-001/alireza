@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
+
+import social from "../../data/social";
 
 import { IoShareSocialOutline } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-import { CiCircleMore } from "react-icons/ci";
 import { SiFreelancer } from "react-icons/si";
 import { FaFacebook } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
@@ -28,16 +29,16 @@ const SocialIcon = ({Data}) => {
 const SocialSidebar = () => {
 
     const responsive = useScreenWidth();
-    const { isMobile, isTablet, isPC} = responsive;
+    const { isMobile } = responsive;
 
     const [openSocial, setOpenSocial] = useState(false);
 
     const icons = [
-        {Icon: CiCircleMore, aria: 'contact',link: '/contact', delay: '.2s'},
-        {Icon: FaFacebook, aria: 'facebook',link: 'https://facebook.com', delay: '.4s'},
-        {Icon: FaWhatsapp, aria: 'whatsapp',link: 'https://whatsapp.com', delay: '.6s'},
-        {Icon: FaLinkedin, aria: 'linkedin',link: 'https://linkedin.com', delay: '.8s'},
-        {Icon: FaGithub, aria: 'github',link: 'https://github.com', delay: '1s'},
+        {Icon: SiFreelancer, aria: 'contact',link: social.freelancer, delay: '.2s'},
+        {Icon: FaFacebook, aria: 'facebook',link: social.facebook, delay: '.4s'},
+        {Icon: FaWhatsapp, aria: 'whatsapp',link: social.whatsapp, delay: '.6s'},
+        {Icon: FaLinkedin, aria: 'linkedin',link: social.linkedin, delay: '.8s'},
+        {Icon: FaGithub, aria: 'github',link: social.github, delay: '1s'},
     ]
     
     if (isMobile) {

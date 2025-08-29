@@ -34,11 +34,11 @@ const HeroSection = () => {
             raysColor="#ffffff"
             raysSpeed={isMobile ? 4.5 : 1.5}
             lightSpread={isMobile ? 100 : 9.8}
-            rayLength={isMobile ? 100 : 1.2}
+            rayLength={isMobile ? 40 : 1.2}
             followMouse={isMobile ? false : true}
             mouseInfluence={ isMobile ? 0 : 0.2}
             noiseAmount={0}
-            distortion={0.02}
+            distortion={isMobile ? 0 : 0.02}
             className="custom-rays"
           />
             <div className="w-full h-screen lg:flex pt-40 text-center lg:text-left absolute top-0 left-0">
