@@ -5,15 +5,18 @@ const About = () => {
 
         <div className="flex">
           <div className="w-1/2">
-            <div className="w-full">
-              <img src="profile.png" alt="Profile" />
+            <div className="w-full px-20">
+              <img src="profile.png" alt="Profile" className="" />
             </div>
           </div>
 
           <div className="w-1/2">
             <h1 className="text-4xl font-bold mb-6">About Me</h1>
             <p className="text-lg leading-relaxed mb-8">
-              I'm Ali—a MERN stack developer and designer with a passion for crafting scalable, user-focused web experiences. I specialize in React, Tailwind CSS, WordPress customization, and domain management. My work blends technical precision with creative clarity, always aiming to build something meaningful.
+              I'm Alireza Ahmadi, a freelance MERN stack developer and WordPress designer based in Kabul, Afghanistan. I craft scalable web experiences that blend clean design with purposeful functionality.
+            </p>
+            <p className="text-lg leading-relaxed mb-8">
+              I believe great software isn’t just built — it’s felt. My work is rooted in clarity, empathy, and the courage to solve real problems. Whether I’m designing a gifting platform for Afghans abroad or refining a personal brand, I aim for impact that lasts.
             </p>
           </div>
 
