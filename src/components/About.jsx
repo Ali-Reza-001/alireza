@@ -3,9 +3,9 @@ const About = () => {
     <section className="min-h-screen px-6 py-20 pt-32 bg-black/80 text-white">
       <div className="w-10/12 mx-auto pt-10">
 
-        <div className="flex">
+        <div className="flex flex-wrap">
           <div className="lg:w-1/2 md:w-10/12 w-full mx-auto">
-            <div className="w-full px-12">
+            <div className="w-full md:px-12">
               <img src="profile.png" alt="Profile" className="rounded-[5rem] rounded-br-2xl" />
             </div>
           </div>
