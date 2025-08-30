@@ -1,7 +1,11 @@
+import BreadCrumb from "./assets/BreadCrumb";
+
 const About = () => {
   return (
-    <section className="min-h-screen px-6 py-20 pt-32 bg-black/80 text-white">
-      <div className="w-10/12 mx-auto pt-10">
+    <section className="w-full min-h-screen pt-16 bg-black/80 text-white">
+      <BreadCrumb title={'About Me'}/>
+
+      <div className="lg:w-10/12 mx-auto w-full px-6 py-20">
 
         <div className="flex flex-wrap">
           <div className="lg:w-1/2 md:w-10/12 w-full mx-auto">
