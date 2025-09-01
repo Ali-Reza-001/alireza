@@ -33,8 +33,8 @@ const SkillBox = ({data}) => {
         <img src={img} alt={title} className="rounded-[1rem] rounded-br-[10rem]" />
       </div>
       <div className="lg:w-3/5 w-full lg:p-4 lg:mt-0 mt-6">
-        <h1 className="text-3xl font-bold text-white pl-4">{title}</h1>
-        <p className="text-lg text-white/80 pl-4 pt-4">
+        <h1 className="text-3xl font-bold text-white px-2 lg:px-4">{title}</h1>
+        <p className="text-lg text-white/80 px-2 lg:px-4 pt-4 lg:text-left text-justify">
           {des}
         </p>
         <hr className="w-11/12 h-[2px] mx-auto my-4 bg-white/80"/>
