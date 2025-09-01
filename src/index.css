@@ -34,16 +34,30 @@ html, body, #root  {
 .underLine {
     position: relative;
 }
+.underLine::before {
+  content: '';
+  width: 0px;
+  height: .5rem;
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 99px;
+}
 .underLine:hover::before {
   content: '';
   width: 80px;
   height: .5rem;
   position: absolute;
   bottom: -4px;
-  left: 1rem;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
   background-color: white;
   border-radius: 99px;
-  opacity: .5;
+  transition: all .6s;
 }
 .underLineW::before {
   content: '';
@@ -51,10 +65,11 @@ html, body, #root  {
   height: .5rem;
   position: absolute;
   bottom: -4px;
-  left: 1rem;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
   background-color: white;
   border-radius: 99px;
-  opacity: 1;
 }
 
 .custom-cursor {
