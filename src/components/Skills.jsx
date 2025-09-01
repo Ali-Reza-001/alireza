@@ -32,7 +32,7 @@ const SkillBox = ({data}) => {
       <div className="lg:w-2/5 w-full bg-white p-2 rounded-[1rem] flex items-center">
         <img src={img} alt={title} className="rounded-[1rem] rounded-br-[10rem]" />
       </div>
-      <div className="lg:w-3/5 w-full p-4">
+      <div className="lg:w-3/5 w-full lg:p-4 lg:mt-0 mt-6">
         <h1 className="text-3xl font-bold text-white pl-4">{title}</h1>
         <p className="text-lg text-white/80 pl-4 pt-4">
           {des}
@@ -114,7 +114,7 @@ const Skills = () => {
   return (
     <section className="w-full min-h-screen pt-16 bg-black/80 text-white">
       <BreadCrumb title={'Skills'}/>
-      <div className="lg:w-10/12 mx-auto w-full px-6 py-20 ">
+      <div className="lg:w-10/12 mx-auto w-full lg:px-6 px-3 py-20 ">
         {skills.map((skill, index) => <SkillBox data={skill} key={index}/>)}
       </div>
     </section>
