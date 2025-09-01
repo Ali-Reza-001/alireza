@@ -12,11 +12,11 @@ const Header = ({open, setOpen}) => {
  const Menu = () => {
   return (
     <div className="h-16 flex justify-center items-center gap-4 px-4 overflow-hidden">
-      <Link to={'/'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 ${currentPath === '/' && 'underLine'}`}>Home</Link>
-      <Link to={'/about'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 ${currentPath === '/about' && 'underLine'}`}>About Me</Link>
-      <Link to={'/skills'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 ${currentPath === '/skills' && 'underLine'}`}>Skills</Link>
-      <Link to={'/projects'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 ${currentPath === '/projects' && 'underLine'}`}>Projects</Link>
-      <Link to={'/contact'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 ${currentPath === '/contact' && 'underLine'}`}>Contact Me</Link>
+      <Link to={'/'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/' && 'underLineW'}`}>Home</Link>
+      <Link to={'/about'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/about' && 'underLineW'}`}>About Me</Link>
+      <Link to={'/skills'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/skills' && 'underLineW'}`}>Skills</Link>
+      <Link to={'/projects'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/projects' && 'underLineW'}`}>Projects</Link>
+      <Link to={'/blog'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/blog' && 'underLineW'}`}>Blog</Link>
     </div>
   )
  }

@@ -34,15 +34,27 @@ html, body, #root  {
 .underLine {
     position: relative;
 }
-.underLine::before {
-    content: '';
-    width: 80px;
-    height: .5rem;
-    position: absolute;
-    bottom: -4px;
-    left: 1rem;
-    background-color: white;
-    border-radius: 99px;
+.underLine:hover::before {
+  content: '';
+  width: 80px;
+  height: .5rem;
+  position: absolute;
+  bottom: -4px;
+  left: 1rem;
+  background-color: white;
+  border-radius: 99px;
+  opacity: .5;
+}
+.underLineW::before {
+  content: '';
+  width: 80px;
+  height: .5rem;
+  position: absolute;
+  bottom: -4px;
+  left: 1rem;
+  background-color: white;
+  border-radius: 99px;
+  opacity: 1;
 }
 
 .custom-cursor {
