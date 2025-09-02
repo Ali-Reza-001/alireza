@@ -3,6 +3,11 @@ import BreadCrumb from "./assets/BreadCrumb";
 import { IoLogoCss3 } from "react-icons/io";
 import { SiExpress, SiMongodb, SiMongoose, SiTailwindcss } from "react-icons/si";
 
+import { motion } from 'framer-motion';
+
+
+
+
 const LangBox = ({data}) => {
 
   let Icon = data.Icon;
@@ -19,7 +24,7 @@ const LangBox = ({data}) => {
   )
 }
 
-const SkillBox = ({data}) => {
+const SkillBox = ({data, index}) => {
 
   let title = data.title;
   let des = data.des;
@@ -28,21 +33,30 @@ const SkillBox = ({data}) => {
   let langs = data.langs;
 
   return (
-    <div className={`w-full flex flex-wrap justify-between bg-white/20 p-4 rounded-[2rem] mt-6 ${ltr && 'lg:flex-row-reverse'}`}>
-      <div className="lg:w-2/5 w-full bg-white p-2 rounded-[1rem] flex items-center">
-        <img src={img} alt={title} className="rounded-[1rem] rounded-br-[10rem]" />
-      </div>
-      <div className="lg:w-3/5 w-full lg:p-4 lg:mt-0 mt-6">
-        <h1 className="text-3xl font-bold text-white px-2 lg:px-4">{title}</h1>
-        <p className="text-lg text-white/80 px-2 lg:px-4 pt-4 lg:text-left text-justify">
-          {des}
-        </p>
-        <hr className="w-11/12 h-[2px] mx-auto my-4 bg-white/80"/>
-        <div className=" w-full flex justify-start px-4 gap-2 flex-wrap">
-          {langs.map((lang,index) => <LangBox data={lang} key={index}/>)}
+    <motion.div
+      key={title}
+      initial={{ opacity: 0, scale: 0.9, x: index % 2 === 0 ? -300 : 300 }}
+      whileInView={{ opacity: 1, scale: 1, x: 0 }}
+      transition={{ duration: 1, ease: [0.25, 0.8, 0.25, 1], delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="will-change-transform w-full bg-white/20 rounded-[2rem] p-4 mt-10"
+    >
+      <div className={`w-full flex flex-wrap justify-between ${ltr && 'lg:flex-row-reverse'}`}>
+        <div className="lg:w-2/5 w-full bg-white p-2 rounded-[1rem] flex items-center">
+          <img src={img} alt={title} className="rounded-[1rem] rounded-br-[10rem]" />
+        </div>
+        <div className="lg:w-3/5 w-full lg:p-4 lg:mt-0 mt-6">
+          <h1 className="text-3xl font-bold text-white px-2 lg:px-4">{title}</h1>
+          <p className="text-lg text-white/80 px-2 lg:px-4 pt-4 lg:text-left text-justify">
+            {des}
+          </p>
+          <hr className="w-11/12 h-[2px] mx-auto my-4 bg-white/80"/>
+          <div className=" w-full flex justify-start px-4 gap-2 flex-wrap">
+            {langs.map((lang,index) => <LangBox data={lang} key={index}/>)}
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -115,7 +129,7 @@ const Skills = () => {
     <section className="w-full min-h-screen pt-16 bg-black/80 text-white">
       <BreadCrumb title={'Skills'}/>
       <div className="lg:w-10/12 mx-auto w-full lg:px-6 px-3 py-20 ">
-        {skills.map((skill, index) => <SkillBox data={skill} key={index}/>)}
+        {skills.map((skill, index) => <SkillBox data={skill} index={index} key={index}/>)}
       </div>
     </section>
   )
