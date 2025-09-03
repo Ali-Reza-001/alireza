@@ -17,10 +17,6 @@ const Layout = () => {
     const {isMobile, isTablet ,isPC} = resposive;
 
     useEffect(() => {
-        document.documentElement.classList.remove('text-2xl');
-    }, []);
-
-    useEffect(() => {
         open ? document.documentElement.style.overflow = 'hidden' : document.documentElement.style.overflow = 'auto';
     },[open])
 
