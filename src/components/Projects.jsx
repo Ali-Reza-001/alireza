@@ -52,12 +52,12 @@ const ProjectBox = ({data, index}) => {
       className="will-change-transform w-full bg-white/20 rounded-[2rem] p-4 mt-10"
     >
       <div className="w-full">
-        <div className="flex">
+        <div className="lg:flex">
           <div className="lg:w-1/2 w-full bg-white p-1 rounded-[2rem]">
             <img src={img} alt={name} className="w-full rounded-[2rem]" />
           </div>
-          <div className="lg:w-1/2 w-full pl-10">
-            <img src={logo} alt="logo" className="h-20 bg-white/20 px-8 py-2 mb-4 rounded-[1rem] drop-shadow-2xl brightness-125"/>
+          <div className="lg:w-1/2 w-full lg:pl-10">
+            <img src={logo} alt="logo" className="h-20 bg-white/20 lg:mt-0 mt-10 px-8 py-2 mb-4 rounded-[1rem] drop-shadow-2xl brightness-125"/>
             <p className="text-white text-xl mt-1 flex gap-4"><VscOrganization className="text-2xl" /> {name}</p>
             <p className="text-white text-xl mt-1 flex gap-4"><BsCalendar2Date className="text-2xl" /> {date}</p>
             <Link to={link} className="text-white text-xl mt-1 flex gap-4 underline"><FaLink  className="text-2xl" /> {link}</Link>
@@ -67,7 +67,7 @@ const ProjectBox = ({data, index}) => {
             </div>
           </div>
         </div>
-        <p className="text-xl text-white/80 p-8">{des}</p>
+        <p className="text-xl text-white/80 lg:px-8 lg:py-8 px-1 py-8 text-justify">{des}</p>
       </div>
     </motion.div>
   )
