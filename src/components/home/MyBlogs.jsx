@@ -1,5 +1,5 @@
 
-import blogs from "../../data/Blogs";
+import blogs from "../../data/blogs";
 
 import BlogBox from "./assets/BlogBox";
 import Slider from "react-slick";
