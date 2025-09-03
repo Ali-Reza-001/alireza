@@ -38,17 +38,15 @@ const ProjectBox = ({data}) => {
             </div>
             <div className="flex w-full justify-between flex-wrap mt-4 px-4">
                 <div className="flex gap-1">
-                    {langs.map((Lang, i) => {
-                        let Icon,color,noun;
-                        if (Lang === 'wordpress') {Icon = FaWordpress;color = 'text-blue-600';noun = 'WordPress'}
-                        else if (Lang === 'elementor') {Icon = FaElementor;color = 'text-purple-600';noun = 'Elementor'}
-                        else if (Lang === 'mailchimp') {Icon = FaMailchimp;color = 'text-gray-500';noun = 'Mailchimp'}
-                        else if (Lang === 'html') {Icon = FaHtml5;color = 'text-orange-600';noun = 'HTML'}
-                        else if (Lang === 'css') {Icon = FaCss3;color = 'text-blue-600';noun = 'CSS'}
-                        else if (Lang === 'js') {Icon = FaJs;color = 'text-yellow-400';noun = 'JavaScript'}
-                        else  {Icon = FaWordpress;color = 'text-blue-600';noun = 'Unkown'}
-                        (<Icon className="text-2xl" key={i}/>)
-                    })}
+                    {langs.map((lang, i) => 
+                        lang === 'wordpress' ? <FaWordpress className="text-2xl" key={i}/> :
+                        lang === 'elementor' ? <FaElementor className="text-2xl" key={i}/> :
+                        lang === 'mailchimp' ? <FaMailchimp className="text-2xl" key={i}/> :
+                        lang === 'html' ? <FaHtml5 className="text-2xl" key={i}/> :
+                        lang === 'css' ? <FaCss3 className="text-2xl" key={i}/> :
+                        lang === 'js' ? <FaJs className="text-2xl" key={i}/> :
+                        <FaWordpress className="text-2xl" key={i}/> 
+                    )}
                 </div>
                 <a target="blank" href={link} className="underline flex items-center"><FaLink className="pt-1"/> {linkName}</a>
             </div>
