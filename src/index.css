@@ -102,3 +102,9 @@ html, body, #root  {
   background-color: rgba(255, 255, 255, 0);
   backdrop-filter: blur(0);
 }
+
+.overTrans {
+  color: transparent;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, .8), rgba(255, 255, 255, .8), rgba(255, 255, 255, 0));
+  background-clip: text;
+}
