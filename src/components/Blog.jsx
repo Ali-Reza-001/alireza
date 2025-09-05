@@ -65,7 +65,7 @@ const Blog = () => {
       <BreadCrumb title={'Blog'}/>
       <div className="lg:w-10/12 mx-auto w-full px-2 lg:px-6 py-10 lg:py-20 ">
         <div className="w-full flex gap-4">
-          <div className="w-full bg-white/10 rounded-[2rem] lg:p-8 p-4">
+          <div className="w-full lg:bg-white/10 rounded-[2rem] lg:p-8">
             {blogs.map((blog, index) => <BlogBox data={blog} key={index} index={index} />)}
           </div>
         </div>
