@@ -16,7 +16,7 @@ const Header = ({open, setOpen}) => {
       <Link to={'/about'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/about' && 'underLineW'}`}>About Me</Link>
       <Link to={'/skills'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/skills' && 'underLineW'}`}>Skills</Link>
       <Link to={'/projects'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/projects' && 'underLineW'}`}>Projects</Link>
-      <Link to={'/blog'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/blogs' && 'underLineW'}`}>Blog</Link>
+      <Link to={'/blogs'} className={`w-28 h-16 grid place-content-center text-xl text-white text-center transition-all duration-300 underLine ${currentPath === '/blogs' && 'underLineW'}`}>Blog</Link>
     </div>
   )
  }

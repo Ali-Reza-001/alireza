@@ -10,7 +10,7 @@ const About = () => {
         <div className="flex flex-wrap">
           <div className="lg:w-1/2 md:w-10/12 w-full mx-auto">
             <div className="w-full md:px-12">
-              <img src="profile.png" alt="Profile" className="rounded-[5rem] rounded-br-2xl" />
+              <img src="profile.webp" alt="Profile" className="rounded-[5rem] rounded-br-2xl" />
             </div>
           </div>
 
