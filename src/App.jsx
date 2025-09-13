@@ -8,6 +8,8 @@ import Projects from "./components/Projects";
 import Blog from "./components/Blog";
 import NotFound from "./components/NotFound";
 
+import Signup from './components/Signup';
+
 function App() {
 
   return (
@@ -18,6 +20,7 @@ function App() {
         <Route path="/skills" element={<Skills/>} />
         <Route path="/projects" element={<Projects/>} />
         <Route path="/blogs" element={<Blog/>} />
+        <Route path="/signUp" element={<Signup/>} />
         <Route path="/*" element={<NotFound/>} />
       </Route>
     </Routes>

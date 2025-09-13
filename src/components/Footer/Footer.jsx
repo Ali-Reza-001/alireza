@@ -34,7 +34,7 @@ const Footer = () => {
                 Please Sign-Up to get a Newsletter account and be noticeable when there is a new post.
                 </p>
                 <div className=" relative w-full my-6">
-                    <Link to={'/signup'} className="block w-full py-2 text-center text-xl text-black/80 bg-white/90 rounded-full border-2 border-white/90 hover:bg-transparent hover:text-white/90 transition duration-500">Sign Up</Link>
+                    <Link to={'/signUp'} className="block w-full py-2 text-center text-xl text-black/80 bg-white/90 rounded-full border-2 border-white/90 hover:bg-transparent hover:text-white/90 transition duration-500">Sign Up</Link>
                 </div>
             </div>
             <div className='lg:w-1/4 md:w-1/2 w-full p-4'>
