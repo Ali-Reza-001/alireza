@@ -9,6 +9,9 @@ import Blog from "./components/Blog";
 import NotFound from "./components/NotFound";
 
 import Signup from './components/Signup';
+import AdminLayout from './components/admin/AdminLayout';
+import Dashboard from './components/admin/Dashboard';
+import Logs from './components/admin/Logs';
 
 function App() {
 
@@ -22,6 +25,10 @@ function App() {
         <Route path="/blogs" element={<Blog/>} />
         <Route path="/signUp" element={<Signup/>} />
         <Route path="/*" element={<NotFound/>} />
+      </Route>
+      <Route path="/admin" element={<AdminLayout/>}>
+        <Route path="/admin" element={<Dashboard/>} />
+        <Route path="/admin/logs" element={<Logs/>} />
       </Route>
     </Routes>
   )
