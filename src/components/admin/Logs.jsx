@@ -27,7 +27,7 @@ const Logs = () => {
                         </tr>
                     </thead>
 
-                    <tbody className="w-full">
+                    <tbody className="w-full overflow-y-auto">
                         {logs.map((log, index) => (
                             <tr key={index} className="border-b border-black/30 h-10">
                             <td>{log.timestamp}</td>

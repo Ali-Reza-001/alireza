@@ -113,3 +113,17 @@ input:-internal-autofill-selected {
     background-color: transparent !important;
     color: white !important;
 }
+
+.activeItem {
+  background-color: #3333;
+  border-radius: 8px;
+}
+.activeItem::before {
+  content: '';
+  position: absolute;
+  left: .3rem;
+  height: 1.8rem;
+  width: 4px;
+  border-radius: 50px;
+  background-color: #333;
+}
