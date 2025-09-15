@@ -8,11 +8,27 @@
 @tailwind utilities;
 
 
+/* /\/\/\/\/\/\/\ || RESET || /\/\/\/\/\/\/\ */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #777 inset !important; /* Replace with your desired background */
+  -webkit-text-fill-color: #fff !important; /* Optional: set text color */
+  transition: background-color 5000s ease-in-out 0s; /* Prevent flicker */
+}
 
 html, body, #root  {
     max-width: 100vw;
     overflow-x: hidden;
 }
+
+
+/* /\/\/\/\/\/\/\ || GENERAL RESET || /\/\/\/\/\/\/\ */
+
+
+/* /\/\/\/\/\ || SLIDER || /\/\/\/\/\ */
 
 .slick-dots > li > button::before { scale: 1.4;}
 .slick-dots > li.slick-active > button::before { scale: 2;}
@@ -30,6 +46,9 @@ html, body, #root  {
     0%   {transform: translateX(100%) scale(.7) }
     100% {transform: translateX(0) scale(1) }
 }
+
+
+/* /\/\/\/\/\ || MENU HOVER || /\/\/\/\/\ */
 
 .underLine {
     position: relative;
@@ -72,6 +91,9 @@ html, body, #root  {
   border-radius: 99px;
 }
 
+
+/* /\/\/\/\/\ || CURSOR FOLLOWER || /\/\/\/\/\ */
+
 .custom-cursor {
   position: absolute;
   z-index: 50;
@@ -109,10 +131,8 @@ html, body, #root  {
   background-clip: text;
 }
 
-input:-internal-autofill-selected {
-    background-color: transparent !important;
-    color: white !important;
-}
+
+/* /\/\/\/\/\ || ASIDE || /\/\/\/\/\ */
 
 .activeItem {
   background-color: #3333;
@@ -126,4 +146,35 @@ input:-internal-autofill-selected {
   width: 4px;
   border-radius: 50px;
   background-color: #333;
+}
+
+
+/* /\/\/\/\/\ || SPINNER || /\/\/\/\/\ */
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-bottom-color: #fff;
+  margin: 0 auto;
+  animation: 1s linear 0s infinite normal spin;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+
+
+/* /\/\/\/\/\ || EMAIL VERIFICATION || /\/\/\/\/\ */
+
+.verified {
+  @apply inline p-1 px-2 bg-green-300 text-sm text-green-500 font-semibold rounded-full;
+}
+
+.unverified {
+  @apply inline p-1 px-2 bg-red-200 text-sm text-red-500 font-semibold rounded-full;
 }

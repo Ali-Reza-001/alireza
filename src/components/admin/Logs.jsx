@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import axiosInstance from "../../utils/axiosInstance";
+import axiosPrivate from "../../api/axiosPrivate";
 
 const Logs = () => {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    axiosInstance
-      .get('/logs')
+    axiosPrivate
+      .get('/api/logs')
       .then((res) => setLogs(res.data))
       .catch((err) => console.error('Failed to fetch logs:', err));
   }, []);
@@ -15,7 +15,7 @@ const Logs = () => {
         <h1 className="text-2xl px-4">Requests</h1>
         <hr className="w-[96%] h-[1px] border-black/40 mx-auto my-4"/>
         <div className="w-full px-8">
-            <div className="w-full">
+            <div className="w-full max-h-[400px] overflow-y-auto">
                 <table className="w-full">
                     <thead className="w-full border-b border-black/30">
                         <tr className=" h-10">

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { TbLogs } from "react-icons/tb";
 import { RiDashboard3Line } from "react-icons/ri";
+import { FaUsers } from "react-icons/fa";
 
 const AsideItemsCon = ({data}) => {
   const location = useLocation();
@@ -25,6 +26,7 @@ const Aside = () => {
   const asideItems = [
     {name: "Dashboard", link: "/admin", Icon: RiDashboard3Line},
     {name: "Logs", link: "/admin/logs", Icon: TbLogs},
+    {name: "Users", link: "/admin/users", Icon: FaUsers},
   ]
 
   return (

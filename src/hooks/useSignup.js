@@ -1,6 +1,6 @@
 // src/hooks/useSignup.js
 import { useState } from 'react';
-import axios from 'axios';
+import axiosPublic from '../api/axiosPublic';
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
@@ -11,15 +11,15 @@ const useSignup = () => {
     setError(null);
 
     try {
-      const res = await axios.post('https://api.ali-reza.dev/register', {
+      const res = await axiosPublic.post('/register', {
         username,
         email,
         password
       });
 
-      return res.data; // You can redirect or show success message here
+      return res.data; 
     } catch (err) {
-      setError(err.response?.data?.error || 'Signup failed');
+      setError(err.response?.data?.message || 'Signup failed');
     } finally {
       setLoading(false);
     }

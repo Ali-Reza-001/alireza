@@ -12,6 +12,7 @@ import Signup from './components/Signup';
 import AdminLayout from './components/admin/AdminLayout';
 import Dashboard from './components/admin/Dashboard';
 import Logs from './components/admin/Logs';
+import Users from "./components/admin/Users";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Route path="/admin" element={<AdminLayout/>}>
         <Route path="/admin" element={<Dashboard/>} />
         <Route path="/admin/logs" element={<Logs/>} />
+        <Route path="/admin/users" element={<Users/>} />
       </Route>
     </Routes>
   )
