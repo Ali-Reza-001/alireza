@@ -1,6 +1,6 @@
 // src/hooks/useSignup.js
 import { useState } from 'react';
-import axiosPublic from '../api/axiosPublic';
+import axiosPrivate from '../api/axiosPrivate';
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ const useSignup = () => {
     setError(null);
 
     try {
-      const res = await axiosPublic.post('/register', {
+      const res = await axiosPrivate.post('/register', {
         username,
         email,
         password
