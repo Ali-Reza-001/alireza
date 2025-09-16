@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import useSignup from '../hooks/useSignup';
 
@@ -15,7 +15,11 @@ const Spinner = () => {
 
 
 const SignupForm = () => {
-  const { signup, loading, error } = useSignup();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || '/';
+
+  const { signup, loading, error, success } = useSignup();
   const [form, setForm] = useState({ username: '', email: '', password: '' });
 
   const handleChange = (e) => {
@@ -26,7 +30,8 @@ const SignupForm = () => {
     e.preventDefault();
     const result = await signup(form);
     if (result) {
-      // Redirect or show success
+      sessionStorage.setItem( 'accessToken' , result?.accessToken);
+      setTimeout(() => {navigate(from, { replace: true });}, 2000)
       console.log('User registered:', result);
     }
   };
@@ -38,6 +43,7 @@ const SignupForm = () => {
             <form onSubmit={handleSubmit} className="lg:w-[40%] w-full lg:bg-white/20 mx-auto lg:rounded-[2rem] px-10 py-10 flex flex-col">
               <h1 className="w-full px-4 pb-8 text-3xl text-white">Sign Up</h1>
               {error && <p className="w-[96%] mx-auto px-4 py-1 font-medium text-red-500 bg-red-300 border-2 border-red-600 rounded-lg">{error}</p>}
+              {success && <p className="w-[96%] mx-auto px-4 py-1 font-medium text-green-500 bg-green-300 border-2 border-green-600 rounded-lg">{success}</p>}
               <input
                   type="text"
                   name="username"

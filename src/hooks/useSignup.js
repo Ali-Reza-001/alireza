@@ -4,6 +4,7 @@ import axiosPublic from '../api/axiosPublic';
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState('');
   const [error, setError] = useState(null);
 
   const signup = async ({ username, email, password }) => {
@@ -16,6 +17,7 @@ const useSignup = () => {
         email,
         password
       });
+      setSuccess(res?.data?.message);
 
       return res.data; 
     } catch (err) {
@@ -25,7 +27,7 @@ const useSignup = () => {
     }
   };
 
-  return { signup, loading, error };
+  return { signup, loading, error, success };
 };
 
 export default useSignup;

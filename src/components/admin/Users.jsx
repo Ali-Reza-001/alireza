@@ -60,10 +60,11 @@ const Users = () => {
                 setLoading(true);
                 const response = await axiosPrivate.get('/api/users');
                 setUsers(response.data);
-                users && setLoading(false)
             } catch (error) {
                 setError(error)
                 console.error("Error fetching users:", error);
+            } finally {
+                setLoading(false)
             }
         };
 
