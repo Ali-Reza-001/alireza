@@ -1,7 +1,8 @@
 import axios from 'axios';
+import DOMAIN from './Domain';
 
 const axiosPublic = axios.create({
-  baseURL: 'https://ali-reza.dev',
+  baseURL: DOMAIN.BackEnd,
   headers: {
     'Content-Type': 'application/json',
   },

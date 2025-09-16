@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { getRefreshToken } from '../utils/refresh';
+import DOMAIN from './Domain';
 
 const axiosPrivate = axios.create({
-  baseURL: 'https://ali-reza.dev',
+  baseURL: DOMAIN.BackEnd,
   headers: {
     'Content-Type': 'application/json',
   },
