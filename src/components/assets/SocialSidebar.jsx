@@ -44,12 +44,12 @@ const SocialSidebar = () => {
     if (isMobile) {
 
         return (
-            <div className='w-24 h-screen fixed bottom-0 right-0 z-[200] text-[rgba(255,255,255,0.5)] text-4xl flex flex-col flex-wrap align-middle sm:justify-center justify-end'>
-                <div className={`w-24 h-1rem text-[rgba(150,150,150,1)] text-4xl flex flex-col flex-wrap align-middle justify-end transition-all duration-500`}>
+            <div className='w-24 h-screen pointer-events-none fixed bottom-0 right-0 z-[200] text-[rgba(255,255,255,0.5)] text-4xl flex flex-col flex-wrap align-middle sm:justify-center justify-end'>
+                <div className={`w-24 h-1rem text-[rgba(150,150,150,1)] text-4xl flex flex-col flex-wrap align-middle justify-end transition-all duration-500 pointer-events-auto`}>
 
                     {openSocial ? icons.map(icon => <SocialIcon Data={icon}  key={icon.link} />) : <div></div>}
                 </div>
-                <div className="w-16 h-16 grid place-content-center bg-gradient-to-br shadow-xl shadow-black/50 from-gray-800 to-gray-400 rounded-full mb-10 ml-2" onClick={() => setOpenSocial(prev => !prev)}>
+                <div className="w-16 h-16 pointer-events-auto grid place-content-center bg-gradient-to-br shadow-xl shadow-black/50 from-gray-800 to-gray-400 rounded-full mb-10 ml-2" onClick={() => setOpenSocial(prev => !prev)}>
                     {openSocial ? <div className="bg-white/50 w-14 h-14 grid place-content-center rounded-full text-black/70 shadow-inner"><IoClose/></div> : <IoShareSocialOutline/>}
                 </div>
             </div>
