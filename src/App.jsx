@@ -8,7 +8,7 @@ import Projects from "./components/Projects";
 import Blog from "./components/Blog";
 import NotFound from "./components/NotFound";
 
-import RequireAuth from "./utils/requireAuth";
+import RequireAuth from "./utils/RequireAuth";
 import SignForm from './components/Sign';
 import AdminLayout from './components/admin/AdminLayout';
 import Dashboard from './components/admin/Dashboard';
