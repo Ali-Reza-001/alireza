@@ -2,18 +2,17 @@
 import { useState } from 'react';
 import axiosPrivate from '../api/axiosPrivate';
 
-const useSignup = () => {
+const useSignin = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
   const [error, setError] = useState(null);
 
-  const sign = async ({ username, email, password }) => {
+  const sign = async ({ email, password }) => {
     setLoading(true);
     setError(null);
 
     try {
-      const res = await axiosPrivate.post('/register', {
-        username,
+      const res = await axiosPrivate.post('/login', {
         email,
         password
       });
@@ -21,7 +20,7 @@ const useSignup = () => {
 
       return res.data; 
     } catch (err) {
-      setError(err.response?.data?.message || 'Signup failed');
+      setError(err.response?.data?.message || 'Sign in failed');
     } finally {
       setLoading(false);
     }
@@ -30,4 +29,4 @@ const useSignup = () => {
   return { sign, loading, error, success, setError };
 };
 
-export default useSignup;
+export default useSignin;

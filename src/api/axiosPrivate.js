@@ -1,6 +1,10 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 import { getRefreshToken } from '../utils/refresh';
 import DOMAIN from './Domain';
+
+
+
 
 const axiosPrivate = axios.create({
   baseURL: DOMAIN.BackEnd,
@@ -26,10 +30,11 @@ axiosPrivate.interceptors.request.use(
 axiosPrivate.interceptors.response.use(
   (response) => response,
   async (error) => {
+    console.log(error)
     const originalRequest = error.config;
 
     if (
-      error.response?.status === 401 &&
+      error.response?.status === 403 &&
       !originalRequest._retry
     ) {
       originalRequest._retry = true;

@@ -8,7 +8,8 @@ import Projects from "./components/Projects";
 import Blog from "./components/Blog";
 import NotFound from "./components/NotFound";
 
-import Signup from './components/Signup';
+import RequireAuth from "./utils/requireAuth";
+import SignForm from './components/Sign';
 import AdminLayout from './components/admin/AdminLayout';
 import Dashboard from './components/admin/Dashboard';
 import Logs from './components/admin/Logs';
@@ -24,10 +25,14 @@ function App() {
         <Route path="/skills" element={<Skills/>} />
         <Route path="/projects" element={<Projects/>} />
         <Route path="/blogs" element={<Blog/>} />
-        <Route path="/signUp" element={<Signup/>} />
+        <Route path="/sign" element={<SignForm/>} />
         <Route path="/*" element={<NotFound/>} />
       </Route>
-      <Route path="/admin" element={<AdminLayout/>}>
+      <Route path="/admin" element={
+        <RequireAuth>
+          <AdminLayout/>
+        </RequireAuth>
+      }>
         <Route path="/admin" element={<Dashboard/>} />
         <Route path="/admin/logs" element={<Logs/>} />
         <Route path="/admin/users" element={<Users/>} />

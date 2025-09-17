@@ -1,25 +1,18 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useSignup from '../hooks/useSignup';
-
-const Spinner = () => {
-  return (
-    <div className='w-64 rounded-[2rem] bg-white/20 p-8'>
-      <div className="w-full">
-        <div className="spinner"></div>
-        <p className='text-xl text-white text-center mt-8'>Please Wait</p>
-      </div>
-    </div>
-  )
-}
+import useSignin from '../hooks/useSignin';
+import Spinner from './assets/Spinner';
 
 
-const SignupForm = () => {
+const SignForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from || '/';
 
-  const { signup, loading, error, success } = useSignup();
+  const [signing, setSign] = useState('in');
+
+  let { sign, loading, error, success, setError } = signing === 'up' ? useSignup() : useSignin();
   const [form, setForm] = useState({ username: '', email: '', password: '' });
 
   const handleChange = (e) => {
@@ -28,7 +21,7 @@ const SignupForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await signup(form);
+    const result = await sign(form);
     if (result) {
       sessionStorage.setItem( 'accessToken' , result?.accessToken);
       setTimeout(() => {navigate(from, { replace: true });}, 2000)
@@ -36,15 +29,20 @@ const SignupForm = () => {
     }
   };
 
+  useEffect(() => {
+    setForm({ username: '', email: '', password: '' });
+    setError('');
+  }, [signing])
+
   return (
     <section className='w-full h-full bg-[radial-gradient(#555,#333)] flex flex-col flex-wrap overflow-hidden'>
         <div className="container mx-auto mt-40 mb-24 flex justify-center items-center">
           {loading ? <Spinner/> : (
             <form onSubmit={handleSubmit} className="lg:w-[40%] w-full lg:bg-white/20 mx-auto lg:rounded-[2rem] px-10 py-10 flex flex-col">
-              <h1 className="w-full px-4 pb-8 text-3xl text-white">Sign Up</h1>
+              <h1 className="w-full px-4 pb-8 text-3xl text-white">{signing === 'up' ? 'Sign Up' : 'Sign In'}</h1>
               {error && <p className="w-[96%] mx-auto px-4 py-1 font-medium text-red-500 bg-red-300 border-2 border-red-600 rounded-lg">{error}</p>}
               {success && <p className="w-[96%] mx-auto px-4 py-1 font-medium text-green-500 bg-green-300 border-2 border-green-600 rounded-lg">{success}</p>}
-              <input
+              {signing === 'up' ? (<input
                   type="text"
                   name="username"
                   placeholder="Username"
@@ -52,7 +50,7 @@ const SignupForm = () => {
                   onChange={handleChange}
                   autoComplete='off'
                   className=" w-full border-b-2 border-white text-white bg-white/0 mx-auto h-10 mt-4 p-4 focus:bg-transparent focus:outline-none"
-              />
+              />) : ''}
               <input
                   type="email"
                   name="email"
@@ -73,9 +71,9 @@ const SignupForm = () => {
               />
               <div className='w-full my-4 flex justify-between items-baseline px-4'>
                   <button type="submit" disabled={loading} className="inline border-2 border-white rounded-2xl text-white bg-transparent p-2 px-8 text-xl mt-10 hover:text-black/80 hover:bg-white">
-                    Sign Up
+                    {signing === 'up' ? 'Sign Up' : 'Sign In'}
                   </button>
-                  <Link to={'/signIn'} className="text-xl text-white underline">SignIn</Link>
+                  <div onClick={() => setSign(prev => prev === 'in' ? 'up' : 'in')} className="text-xl text-white underline">{signing === 'up' ? 'Sign In' : 'Sign Up'}</div>
               </div>
             </form>
             )}
@@ -84,4 +82,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default SignForm;
