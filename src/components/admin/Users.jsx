@@ -5,7 +5,7 @@ import { CiEdit } from "react-icons/ci";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 
 
-const SingalUser = ({ data }) => {
+const SingalUser = ({ data, index }) => {
   const { username, email, emailVerified, role} = data;
   const ip = data.ip || "undefined";
 
@@ -15,7 +15,7 @@ const SingalUser = ({ data }) => {
   return (
     <tr className=" h-10 p-0 border-b border-black/40">
         <td>
-            <p className="w-full h-full grid place-content-center">#1</p>
+            <p className="w-full h-full grid place-content-center">#{index}</p>
         </td>
         <td>
             <div className="flex items-baseline justify-start relative">
@@ -75,7 +75,10 @@ const Users = () => {
 
     return (
         <div className="w-full p-4">
-            <h1 className="text-2xl px-4">Users</h1>
+            <div className="w-full flex justify-start items-center">
+                <h1 className="text-2xl px-4">Users</h1>
+                <p>total ({users.length}) users</p>
+            </div>
             <hr className="w-[96%] h-[1px] border-black/40 mx-auto my-4"/>
             <div className="w-full px-8">
                 <div className="w-full">
@@ -96,7 +99,7 @@ const Users = () => {
                             {
                                 error ? <tr><td>Error</td></tr> :
                                 loading ? <tr><td>Loading</td></tr> :
-                                users.map((user, i) => <SingalUser data={user} key={i} />)
+                                users.map((user, i) => <SingalUser data={user} index={i + 1} key={i} />)
                             }
                         </tbody>
                     </table>

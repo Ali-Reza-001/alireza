@@ -11,7 +11,7 @@ const RequireAuth = ({ children, role }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axiosPrivate.get('/admin');
+        const res = await axiosPrivate.get('/api/admin');
         console.log(res.data)
         setIsAllowed(true);
       } catch (err) {

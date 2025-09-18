@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import useSignup from '../hooks/useSignup';
 import useSignin from '../hooks/useSignin';
 import Spinner from './assets/Spinner';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 
 const SignForm = () => {
@@ -10,6 +11,7 @@ const SignForm = () => {
   const navigate = useNavigate();
   const from = location.state?.from || '/';
 
+  const [passVisible, setPassVisible] = useState('password');
   const [signing, setSign] = useState('in');
 
   let { sign, loading, error, success, setError } = signing === 'up' ? useSignup() : useSignin();
@@ -32,7 +34,10 @@ const SignForm = () => {
   useEffect(() => {
     setForm({ username: '', email: '', password: '' });
     setError('');
-  }, [signing])
+  }, [signing]);
+
+  useEffect(() => {
+  }, [passVisible])
 
   return (
     <section className='w-full h-full bg-[radial-gradient(#555,#333)] flex flex-col flex-wrap overflow-hidden'>
@@ -60,15 +65,20 @@ const SignForm = () => {
                   autoComplete='off'
                   className=" w-full border-b-2 border-white text-white bg-white/0 mx-auto h-10 mt-4 p-4 focus:bg-transparent focus:outline-none"
               />
-              <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={form.password}
-                  onChange={handleChange}
-                  autoComplete='off'
-                  className=" w-full border-b-2 border-white text-white bg-white/0 mx-auto h-10 mt-4 p-4 focus:bg-transparent focus:outline-none"
-              />
+              <div className="w-full relative">
+                <input
+                    type={passVisible}
+                    name="password"
+                    placeholder="Password"
+                    value={form.password}
+                    onChange={handleChange}
+                    autoComplete='off'
+                    className=" w-full border-b-2 border-white text-white bg-white/0 mx-auto h-10 mt-4 p-4 focus:bg-transparent focus:outline-none"
+                />
+                <div  className='absolute text-2xl text-white right-2 bottom-2' onClick={() => setPassVisible(prev => prev === 'text' ? 'password' : 'text')}>
+                  {passVisible === 'password' ? <FiEye /> : <FiEyeOff />}
+                </div>
+              </div>
               <div className='w-full my-4 flex justify-between items-baseline px-4'>
                   <button type="submit" disabled={loading} className="inline border-2 border-white rounded-2xl text-white bg-transparent p-2 px-8 text-xl mt-10 hover:text-black/80 hover:bg-white">
                     {signing === 'up' ? 'Sign Up' : 'Sign In'}

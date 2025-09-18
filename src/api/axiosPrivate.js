@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useEffect } from 'react';
 import { getRefreshToken } from '../utils/refresh';
 import DOMAIN from './Domain';
 
