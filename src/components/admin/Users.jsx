@@ -16,16 +16,18 @@ const SingalUser = ({ data, index }) => {
 
   const roles = (
     <div className="w-full">
-        {role.map((role, i) => role == 1001 ? <p className="text-sm leading-4">Admin</p> : role == 2002 ? <p className="text-sm leading-4">Blogger</p>: <p className="text-sm leading-4">User</p>)}
+        {role.map((role, i) => role == 1001 ? <p key={i} className="text-sm leading-4">Admin</p> : role == 2002 ? <p key={i} className="text-sm leading-4">Blogger</p>: <p key={i} className="text-sm leading-4">User</p>)}
     </div>
   );
 
   let verified;
   emailVerified ? verified = "Verified" : verified = "Unverified";
 
-  const handleDelete = async (_id) => {
-    const res = await axiosPrivate.delete('/usersControl', {id: _id});
-    console.log(res);
+  const handleDelete = async (id) => {
+    if(confirm('Delete this user ?')) {
+        const res = await axiosPrivate.delete('/api/usersControl', {data: {id: _id}});
+        console.log(res);
+    }
   }
 
   return (
@@ -55,7 +57,7 @@ const SingalUser = ({ data, index }) => {
                 <div className="p-1 rounded-xl hover:bg-black/20 bg-black/10 transition-all duration-200 cursor-pointer" title="edit">
                     <CiEdit className="text-2xl"/>
                 </div>
-                <div className="p-1 rounded-xl hover:bg-red-200 bg-red-100 transition-all duration-200 cursor-pointer text-red-500" title="delete" onClick={handleDelete}>
+                <div className="p-1 rounded-xl hover:bg-red-200 bg-red-100 transition-all duration-200 cursor-pointer text-red-500" title="delete" onClick={() => handleDelete(_id)}>
                     <MdOutlineDeleteOutline className="text-2xl"/>
                 </div>
             </div>

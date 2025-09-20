@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 import Cursor from './assets/Cursor';
 import SocialSidebar from './assets/SocialSidebar';
+import Modal from './assets/Modal';
 
 import Header from './header/Header';
 import Aside from './Aside/Aside';
@@ -22,6 +23,7 @@ const Layout = () => {
 
     return (
         <>
+            <Modal></Modal>
             <header className='fixed top-0 w-full z-[9999] font-en'>
                 <Header open={open} setOpen={setOpen} />
             </header>

@@ -27,7 +27,7 @@ const SignForm = () => {
     e.preventDefault();
     const result = await sign(form);
     if (result) {
-      if(result?.accesstoken) {
+      if(signing === 'in') {
         sessionStorage.setItem( 'accessToken' , result?.accessToken);
         setTimeout(() => {navigate('/');}, 2000);
       } else {
