@@ -89,7 +89,7 @@ const SignForm = () => {
                   <button type="submit" disabled={loading} className="inline border-2 border-white rounded-2xl text-white bg-transparent p-2 px-8 text-xl mt-10 hover:text-black/80 hover:bg-white">
                     {signing === 'up' ? 'Sign Up' : 'Sign In'}
                   </button>
-                  <div onClick={() => setSign(prev => prev === 'in' ? 'up' : 'in')} className="text-xl text-white underline">{signing === 'up' ? 'Sign In' : 'Sign Up'}</div>
+                  <div onClick={() => setSign(prev => prev === 'in' ? 'up' : 'in')} className="text-xl text-white underline cursor-pointer">{signing === 'up' ? 'Sign In' : 'Sign Up'}</div>
               </div>
               </form>
             )

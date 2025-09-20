@@ -6,11 +6,27 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 
 
 const SingalUser = ({ data, index }) => {
-  const { username, email, emailVerified, role} = data;
+  const { username, email, emailVerified, role, createdAt, _id} = data;
   const ip = data.ip || "undefined";
+
+  role.sort()
+
+  const utcDate = new Date(createdAt);
+  const KabulDate = utcDate.toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true });
+
+  const roles = (
+    <div className="w-full">
+        {role.map((role, i) => role == 1001 ? <p className="text-sm leading-4">Admin</p> : role == 2002 ? <p className="text-sm leading-4">Blogger</p>: <p className="text-sm leading-4">User</p>)}
+    </div>
+  );
 
   let verified;
   emailVerified ? verified = "Verified" : verified = "Unverified";
+
+  const handleDelete = async (_id) => {
+    const res = await axiosPrivate.delete('/usersControl', {id: _id});
+    console.log(res);
+  }
 
   return (
     <tr className=" h-10 p-0 border-b border-black/40">
@@ -32,14 +48,14 @@ const SingalUser = ({ data, index }) => {
         <td >
             <p className={emailVerified ? 'verified' : 'unverified'}>{verified}</p>
         </td>
-        <td>{role}</td>
-        <td>2015 / 9 / 4</td>
+        <td>{roles}</td>
+        <td>{KabulDate}</td>
         <td>
             <div className="p-4 flex gap-1 items-center justify-start ">
                 <div className="p-1 rounded-xl hover:bg-black/20 bg-black/10 transition-all duration-200 cursor-pointer" title="edit">
                     <CiEdit className="text-2xl"/>
                 </div>
-                <div className="p-1 rounded-xl hover:bg-red-200 bg-red-100 transition-all duration-200 cursor-pointer text-red-500" title="delete">
+                <div className="p-1 rounded-xl hover:bg-red-200 bg-red-100 transition-all duration-200 cursor-pointer text-red-500" title="delete" onClick={handleDelete}>
                     <MdOutlineDeleteOutline className="text-2xl"/>
                 </div>
             </div>

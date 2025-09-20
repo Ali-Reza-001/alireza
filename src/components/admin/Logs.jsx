@@ -30,10 +30,10 @@ const Logs = () => {
                     <tbody className="w-full overflow-y-auto">
                         {logs.map((log, index) => (
                             <tr key={index} className="border-b border-black/30 h-10">
-                            <td>{log.timestamp}</td>
+                            <td>{new Date(log.timestamp).toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true })}</td>
                             <td>{log.ip}</td>
                             <td>{log.method}</td>
-                            <td>{log.url}</td>
+                            <td>{log.url.includes('?') ? log.url.split('?')[0] : log.url}</td>
                             <td title={log.userAgent}>
                                 {log.userAgent.slice(0, 25)}...
                             </td>
