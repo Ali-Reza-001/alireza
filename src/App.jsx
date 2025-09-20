@@ -7,6 +7,7 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Blog from "./components/Blog";
 import NotFound from "./components/NotFound";
+import ResendCodePage from "./components/ResendCodePage";
 
 import RequireAuth from "./utils/RequireAuth";
 import SignForm from './components/Sign';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/projects" element={<Projects/>} />
         <Route path="/blogs" element={<Blog/>} />
         <Route path="/sign" element={<SignForm/>} />
+        <Route path="/resend" element={<ResendCodePage/>} />
         <Route path="/*" element={<NotFound/>} />
       </Route>
       <Route path="/admin" element={

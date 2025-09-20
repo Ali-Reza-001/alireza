@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import useSignup from '../hooks/useSignup';
 import useSignin from '../hooks/useSignin';
@@ -7,6 +7,7 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 
 const SignForm = () => {
+
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from || '/';
@@ -17,6 +18,7 @@ const SignForm = () => {
   let { sign, loading, error, success, setError } = signing === 'up' ? useSignup() : useSignin();
   const [form, setForm] = useState({ username: '', email: '', password: '' });
 
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -25,8 +27,12 @@ const SignForm = () => {
     e.preventDefault();
     const result = await sign(form);
     if (result) {
-      sessionStorage.setItem( 'accessToken' , result?.accessToken);
-      setTimeout(() => {navigate(from, { replace: true });}, 2000)
+      if(result?.accesstoken) {
+        sessionStorage.setItem( 'accessToken' , result?.accessToken);
+        setTimeout(() => {navigate('/');}, 2000);
+      } else {
+        setTimeout(() => {navigate('/resend');}, 2000);
+      }
       console.log('User registered:', result);
     }
   };
@@ -36,14 +42,14 @@ const SignForm = () => {
     setError('');
   }, [signing]);
 
-  useEffect(() => {
-  }, [passVisible])
-
   return (
     <section className='w-full h-full bg-[radial-gradient(#555,#333)] flex flex-col flex-wrap overflow-hidden'>
         <div className="container mx-auto mt-40 mb-24 flex justify-center items-center">
-          {loading ? <Spinner/> : (
-            <form onSubmit={handleSubmit} className="lg:w-[40%] w-full lg:bg-white/20 mx-auto lg:rounded-[2rem] px-10 py-10 flex flex-col">
+          {
+            loading ? 
+              <Spinner/> :  
+            (
+              <form onSubmit={handleSubmit} className="lg:w-[40%] w-full lg:bg-white/20 mx-auto lg:rounded-[2rem] px-10 py-10 flex flex-col">
               <h1 className="w-full px-4 pb-8 text-3xl text-white">{signing === 'up' ? 'Sign Up' : 'Sign In'}</h1>
               {error && <p className="w-[96%] mx-auto px-4 py-1 font-medium text-red-500 bg-red-300 border-2 border-red-600 rounded-lg">{error}</p>}
               {success && <p className="w-[96%] mx-auto px-4 py-1 font-medium text-green-500 bg-green-300 border-2 border-green-600 rounded-lg">{success}</p>}
@@ -85,8 +91,9 @@ const SignForm = () => {
                   </button>
                   <div onClick={() => setSign(prev => prev === 'in' ? 'up' : 'in')} className="text-xl text-white underline">{signing === 'up' ? 'Sign In' : 'Sign Up'}</div>
               </div>
-            </form>
-            )}
+              </form>
+            )
+          }
         </div>
     </section>
   );
