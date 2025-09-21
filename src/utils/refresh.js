@@ -1,5 +1,5 @@
 import axios from 'axios';
-import DOMAIN from '../api/Domain';
+import DOMAIN from '../api/utils/Domain';
 
 export const getRefreshToken = async () => {
   const response = await axios.get('/auth/refresh',{

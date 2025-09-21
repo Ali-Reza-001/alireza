@@ -1,27 +1,23 @@
 import { useState, useEffect } from "react";
-
-import axiosPrivate from "../../api/axiosPrivate";
+import { useQuery } from '@tanstack/react-query';
+import { fetchUsers } from '../../api/users';
 import { CiEdit } from "react-icons/ci";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 
+import axiosPrivate from "../../api/utils/axiosPrivate";
+
 
 const SingalUser = ({ data, index }) => {
-  const { username, email, emailVerified, role, createdAt, _id} = data;
-  const ip = data.ip || "undefined";
-
-  role.sort()
+  const { username, email, emailVerified, role, createdAt, ip, _id} = data;
 
   const utcDate = new Date(createdAt);
   const KabulDate = utcDate.toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true });
 
   const roles = (
     <div className="w-full">
-        {role.map((role, i) => role == 1001 ? <p key={i} className="text-sm leading-4">Admin</p> : role == 2002 ? <p key={i} className="text-sm leading-4">Blogger</p>: <p key={i} className="text-sm leading-4">User</p>)}
+        {role.sort().map((role, i) => role == 1001 ? <p key={i} className="text-sm leading-4">Admin</p> : role == 2002 ? <p key={i} className="text-sm leading-4">Blogger</p>: <p key={i} className="text-sm leading-4">User</p>)}
     </div>
   );
-
-  let verified;
-  emailVerified ? verified = "Verified" : verified = "Unverified";
 
   const handleDelete = async (id) => {
     if(confirm('Delete this user ?')) {
@@ -48,12 +44,12 @@ const SingalUser = ({ data, index }) => {
         </td>
         <td>{ip}</td>
         <td >
-            <p className={emailVerified ? 'verified' : 'unverified'}>{verified}</p>
+            <p className={emailVerified ? 'verified' : 'unverified'}>{emailVerified ? 'Verified' : 'Unverified'}</p>
         </td>
         <td>{roles}</td>
         <td>{KabulDate}</td>
         <td>
-            <div className="p-4 flex gap-1 items-center justify-start ">
+            <div className="flex gap-1 items-center justify-start ">
                 <div className="p-1 rounded-xl hover:bg-black/20 bg-black/10 transition-all duration-200 cursor-pointer" title="edit">
                     <CiEdit className="text-2xl"/>
                 </div>
@@ -66,31 +62,13 @@ const SingalUser = ({ data, index }) => {
   );
 };
 
-const Users = () => {
+const Users = () => {  
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                setLoading(true);
-                const response = await axiosPrivate.get('/api/users');
-                setUsers(response.data);
-            } catch (error) {
-                setError(error)
-                console.error("Error fetching users:", error);
-            } finally {
-                setLoading(false)
-            }
-        };
-
-        fetchUsers();
-    }, [])
-
-
-
+    const { data: users = [], isLoading, error } = useQuery({
+        queryKey: ['users'],
+        queryFn: fetchUsers
+    });
+    
     return (
         <div className="w-full p-4">
             <div className="w-full flex justify-start items-center">
@@ -116,7 +94,7 @@ const Users = () => {
                         <tbody className="w-full overflow-y-auto">
                             {
                                 error ? <tr><td>Error</td></tr> :
-                                loading ? <tr><td>Loading</td></tr> :
+                                isLoading ? <tr><td>Loading</td></tr> :
                                 users.map((user, i) => <SingalUser data={user} index={i + 1} key={i} />)
                             }
                         </tbody>

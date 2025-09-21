@@ -1,6 +1,6 @@
 // src/hooks/useSignup.js
 import { useState } from 'react';
-import axiosPrivate from '../api/axiosPrivate';
+import axiosPrivate from '../api/utils/axiosPrivate';
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams, Link } from 'react-router-dom';
 
-import axiosPublic from '../api/axiosPublic';
+import axiosPublic from '../api/utils/axiosPublic';
 import PlaceHolder from './assets/PlaceHolder';
 
 const ResendCodePage = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axiosPrivate from '../api/axiosPrivate';
+import axiosPrivate from '../api/utils/axiosPrivate';
 import Spinner from '../components/assets/Spinner';
 
 const RequireAuth = ({ children, role }) => {

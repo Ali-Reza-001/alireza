@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getRefreshToken } from '../utils/refresh';
+import { getRefreshToken } from '../../utils/refresh';
 import DOMAIN from './Domain';
 
 

@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import axiosPrivate from "../../api/axiosPrivate";
+import { useQuery } from "@tanstack/react-query";
+
+import { fetchLogs } from "../../api/logs";
+import axiosPrivate from "../../api/utils/axiosPrivate";
 
 const Logs = () => {
-  const [logs, setLogs] = useState([]);
 
-  useEffect(() => {
-    axiosPrivate
-      .get('/api/logs')
-      .then((res) => setLogs(res.data))
-      .catch((err) => console.error('Failed to fetch logs:', err));
-  }, []);
+  const {data: logs = [], isLoading, error} = useQuery({
+    queryKey: ['logs'],
+    queryFn: fetchLogs
+  })
+
   return (
     <div className="w-full h-full p-4">
         <h1 className="text-2xl px-4">Requests</h1>
@@ -28,17 +29,23 @@ const Logs = () => {
                     </thead>
 
                     <tbody className="w-full overflow-y-auto">
-                        {logs.map((log, index) => (
-                            <tr key={index} className="border-b border-black/30 h-10">
-                            <td>{new Date(log.timestamp).toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true })}</td>
-                            <td>{log.ip}</td>
-                            <td>{log.method}</td>
-                            <td>{log.url.includes('?') ? log.url.split('?')[0] : log.url}</td>
-                            <td title={log.userAgent}>
-                                {log.userAgent.slice(0, 25)}...
-                            </td>
-                            </tr>
-                        ))}
+                        {
+                            isLoading ? 
+                                <p>Loading ...</p> : 
+                            error ? 
+                                <p>{error}</p> : 
+                            logs.map((log, index) => (
+                                <tr key={index} className="border-b border-black/30 h-10">
+                                <td>{new Date(log.timestamp).toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true })}</td>
+                                <td>{log.ip}</td>
+                                <td>{log.method}</td>
+                                <td>{log.url.includes('?') ? log.url.split('?')[0] : log.url}</td>
+                                <td title={log.userAgent}>
+                                    {log.userAgent.slice(0, 25)}...
+                                </td>
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>

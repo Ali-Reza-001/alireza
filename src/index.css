@@ -24,6 +24,13 @@ html, body, #root  {
     overflow-x: hidden;
 }
 
+table td {
+  text-align: center
+}
+table tr > td:nth-child(2) > div {
+  text-align: left
+}
+
 
 /* /\/\/\/\/\/\/\ || GENERAL RESET || /\/\/\/\/\/\/\ */
 
