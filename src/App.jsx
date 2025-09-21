@@ -31,9 +31,9 @@ function App() {
         <Route path="/*" element={<NotFound/>} />
       </Route>
       <Route path="/admin" element={
-        <RequireAuth>
+        // <RequireAuth>
           <AdminLayout/>
-        </RequireAuth>
+        // </RequireAuth>
       }>
         <Route path="/admin" element={<Dashboard/>} />
         <Route path="/admin/logs" element={<Logs/>} />

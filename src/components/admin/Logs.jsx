@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { fetchLogs } from "../../api/logs";
+import { fetchLogs } from "../../api/admin/logs";
 import axiosPrivate from "../../api/utils/axiosPrivate";
 
 const Logs = () => {

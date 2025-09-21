@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
-import { useQuery } from '@tanstack/react-query';
-import { fetchUsers } from '../../api/users';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { fetchUsers, deleteUser } from '../../api/admin/users';
 import { CiEdit } from "react-icons/ci";
 import { MdOutlineDeleteOutline } from "react-icons/md";
-
-import axiosPrivate from "../../api/utils/axiosPrivate";
 
 
 const SingalUser = ({ data, index }) => {
   const { username, email, emailVerified, role, createdAt, ip, _id} = data;
+
+    const queryClient = useQueryClient();
+    const {mutate: deleteUserMutate, isLoading} = useMutation({
+        mutationFn: deleteUser,
+        onSuccess: () => {queryClient.invalidateQueries({queryKey: ['users']})},
+        onError: (err) => {console.error('Delete failed :', err)}
+    });
 
   const utcDate = new Date(createdAt);
   const KabulDate = utcDate.toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true });
@@ -21,8 +26,8 @@ const SingalUser = ({ data, index }) => {
 
   const handleDelete = async (id) => {
     if(confirm('Delete this user ?')) {
-        const res = await axiosPrivate.delete('/api/usersControl', {data: {id: _id}});
-        console.log(res);
+        deleteUserMutate(id);
+        console.log(data);
     }
   }
 
