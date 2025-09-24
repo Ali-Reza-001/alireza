@@ -189,7 +189,7 @@ table tr > td:nth-child(2) > div {
 /* /\/\/\/\/\ || EMAIL VERIFICATION || /\/\/\/\/\ */
 
 .verified {
-  @apply inline p-1 px-2 bg-green-300 text-sm text-green-500 font-semibold rounded-full;
+  @apply inline p-1 px-2 bg-green-200 text-sm text-green-500 font-semibold rounded-full;
 }
 
 .unverified {

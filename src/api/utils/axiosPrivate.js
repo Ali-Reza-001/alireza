@@ -29,7 +29,7 @@ axiosPrivate.interceptors.request.use(
 axiosPrivate.interceptors.response.use(
   (response) => response,
   async (error) => {
-    console.log(error)
+    console.log(error.response?.data?.message)
     const originalRequest = error.config;
 
     if (

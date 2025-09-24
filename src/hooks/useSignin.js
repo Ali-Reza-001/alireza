@@ -7,14 +7,15 @@ const useSignin = () => {
   const [success, setSuccess] = useState('');
   const [error, setError] = useState(null);
 
-  const sign = async ({ email, password }) => {
+  const sign = async ({ email, password, constUser }) => {
     setLoading(true);
     setError(null);
 
     try {
       const res = await axiosPrivate.post('/login', {
         email,
-        password
+        password,
+        constUser
       });
       setSuccess(res?.data?.message);
 

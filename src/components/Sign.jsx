@@ -4,6 +4,7 @@ import useSignup from '../hooks/useSignup';
 import useSignin from '../hooks/useSignin';
 import Spinner from './assets/Spinner';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { div } from 'framer-motion/client';
 
 
 const SignForm = () => {
@@ -16,11 +17,10 @@ const SignForm = () => {
   const [signing, setSign] = useState('in');
 
   let { sign, loading, error, success, setError } = signing === 'up' ? useSignup() : useSignin();
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
-
+  const [form, setForm] = useState({ username: '', email: '', password: '', constUser: true });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.name === 'constUser' ? e.target.checked : e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -38,7 +38,7 @@ const SignForm = () => {
   };
 
   useEffect(() => {
-    setForm({ username: '', email: '', password: '' });
+    setForm({ username: '', email: '', password: '', constUser: true });
     setError('');
   }, [signing]);
 
@@ -69,6 +69,7 @@ const SignForm = () => {
                   value={form.email}
                   onChange={handleChange}
                   autoComplete='off'
+                  required
                   className=" w-full border-b-2 border-white text-white bg-white/0 mx-auto h-10 mt-4 p-4 focus:bg-transparent focus:outline-none"
               />
               <div className="w-full relative">
@@ -79,12 +80,29 @@ const SignForm = () => {
                     value={form.password}
                     onChange={handleChange}
                     autoComplete='off'
+                    required
                     className=" w-full border-b-2 border-white text-white bg-white/0 mx-auto h-10 mt-4 p-4 focus:bg-transparent focus:outline-none"
                 />
                 <div  className='absolute text-2xl text-white right-2 bottom-2' onClick={() => setPassVisible(prev => prev === 'text' ? 'password' : 'text')}>
                   {passVisible === 'password' ? <FiEye /> : <FiEyeOff />}
                 </div>
               </div>
+              {signing === 'in' ? (
+                <div className="flex w-full justify-between items-center px-2 pt-6 flex-wrap">
+                  <div className="flex justify-start items-center border-b-2 border-white pb-1 md:pb-2">
+                    <label htmlFor="constUser" className='text-white'>Trust the device ?</label>
+                    <input
+                      type="checkbox"
+                      id='constUser'
+                      name="constUser"  
+                      checked={form.constUser || false}
+                      onChange={handleChange}
+                      className=" w-6 h-6 text-white bg-white/0 md:ml-10 ml-4"
+                    />
+                  </div>
+                  <Link className='text-white underline' to={'/resend'}>Forgot Password ?</Link>
+                </div>
+              ) : ''}
               <div className='w-full my-4 flex justify-between items-baseline px-4'>
                   <button type="submit" disabled={loading} className="inline border-2 border-white rounded-2xl text-white bg-transparent p-2 px-8 text-xl mt-10 hover:text-black/80 hover:bg-white">
                     {signing === 'up' ? 'Sign Up' : 'Sign In'}
