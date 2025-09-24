@@ -3,6 +3,8 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchUsers, deleteUser } from '../../api/admin/users';
 import { CiEdit } from "react-icons/ci";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { GoInfo } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 
 const SingalUser = ({ data, index }) => {
@@ -61,6 +63,9 @@ const SingalUser = ({ data, index }) => {
                 <div className="p-1 rounded-xl hover:bg-red-200 bg-red-100 transition-all duration-200 cursor-pointer text-red-500" title="delete" onClick={() => handleDelete(_id)}>
                     <MdOutlineDeleteOutline className="text-2xl"/>
                 </div>
+                <Link to={`/admin/user/${_id}`} className="p-1 rounded-xl hover:bg-blue-200 bg-blue-100 transition-all duration-200 cursor-pointer text-blue-500" title="delete">
+                    <GoInfo className="text-2xl"/>
+                </Link>
             </div>
         </td>
     </tr>

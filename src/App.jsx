@@ -15,6 +15,7 @@ import AdminLayout from './components/admin/AdminLayout';
 import Dashboard from './components/admin/Dashboard';
 import Logs from './components/admin/Logs';
 import Users from "./components/admin/Users";
+import UserPage from "./components/admin/UserPage";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/admin" element={<Dashboard/>} />
         <Route path="/admin/logs" element={<Logs/>} />
         <Route path="/admin/users" element={<Users/>} />
+        <Route path="/admin/user/:id" element={<UserPage/>} />
       </Route>
     </Routes>
   )
