@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchUsers, deleteUser } from '../../api/admin/users';
+import { getAllUsers, deleteUser } from '../../api/admin/users';
 import { CiEdit } from "react-icons/ci";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { GoInfo } from "react-icons/go";
@@ -76,7 +76,7 @@ const Users = () => {
 
     const { data: users = [], isLoading, error } = useQuery({
         queryKey: ['users'],
-        queryFn: fetchUsers
+        queryFn: getAllUsers
     });
     
     return (
@@ -88,7 +88,7 @@ const Users = () => {
             <hr className="w-[96%] h-[1px] border-black/40 mx-auto my-4"/>
             <div className="w-full px-8">
                 <div className="w-full">
-                    <table className="w-full">
+                    <table className="w-full" id="usersTable">
                         <thead className="w-full border-b border-black/30">
                             <tr className=" h-10">
                                 <td>Id</td>

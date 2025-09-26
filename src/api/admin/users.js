@@ -1,8 +1,14 @@
 
 import axiosPrivate from '../utils/axiosPrivate';
 
-export const fetchUsers = async () => {
-  const res = await axiosPrivate.get('/api/users');
+export const getUser = async (id) => {
+  const res = await axiosPrivate.get(`/api/usersControl/${id}`);
+  console.log(res.data)
+  return res.data;
+};
+
+export const getAllUsers = async () => {
+  const res = await axiosPrivate.get('/api/usersControl');
   return res.data;
 };
 
