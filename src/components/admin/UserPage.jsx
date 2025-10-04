@@ -23,7 +23,7 @@ const UserPage = () => {
     return (
         <div className='w-full p-6 pt-4 flex gap-6'>
             <div className="w-1/3">
-                <div className="w-full p-4 rounded-[2rem] shadow-lg shadow-black/50">
+                <div className="w-full p-4 rounded-[2rem] shadow-2xl shadow-black/50">
                     <div className="w-1/2 aspect-square bg-pink-600 text-9xl text-white grid place-content-center mx-auto rounded-full border-8 border-green-400 my-6">
                         {
                             userProfilePic ?
@@ -45,7 +45,7 @@ const UserPage = () => {
                 </div>
             </div>
             <div className="w-2/3">
-                <div className="w-full h-full rounded-[2rem] shadow-lg shadow-black/50">
+                <div className="w-full h-full rounded-[2rem] shadow-2xl shadow-black/50">
                     <h2 className="w-full py-4 px-8 text-2xl">Information</h2>
                     <hr className="w-[94%] mx-auto border border-black/50"/>
                     <div className="w-full py-2 px-8">
