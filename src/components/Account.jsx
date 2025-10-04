@@ -22,7 +22,10 @@ const UploadModal = ({setModalOpen}) => {
             setIsLoading(false);
             setTimeout(() => {setModalOpen(false);}, 2000);
         },
-        onError: (err) => {console.error('Upload failed :', err)}
+        onError: (err) => {
+            console.error('Upload failed :', err);
+            setIsLoading(false);
+        }
     });
 
     const handleSelect = async (e) => {
