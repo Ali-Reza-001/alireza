@@ -17,7 +17,7 @@ const UserPage = () => {
     if (isLoading) return <p className=" m-10 w-8 h-8 border-2 border-black/70 rounded-full border-b-transparent animate-spin"></p>;
     if (isError) return <p className="m-10 text-xl text-red-500">{error.message}</p>;
 
-    const { username, email, emailVerified, role, createdAt, updatedAt, password, ipInfo } = data;
+    const { username, email, emailVerified, role, createdAt, updatedAt, password, ipInfo, userProfilePic } = data;
     console.log(data);
 
     return (
@@ -25,7 +25,11 @@ const UserPage = () => {
             <div className="w-1/3">
                 <div className="w-full p-4 rounded-[2rem] shadow-lg shadow-black/50">
                     <div className="w-1/2 aspect-square bg-pink-600 text-9xl text-white grid place-content-center mx-auto rounded-full border-8 border-green-400 my-6">
-                        {username.charAt(0).toUpperCase()} 
+                        {
+                            userProfilePic ?
+                            <img src={userProfilePic} alt={username} className="w-full h-full object-cover rounded-full"/> :
+                            username.charAt(0).toUpperCase()
+                        } 
                     </div>
                     <h2 className="text-center text-4xl">{username.charAt(0).toUpperCase()+username.slice(1)}</h2>
                     <div className="w-full p-4 py-8">

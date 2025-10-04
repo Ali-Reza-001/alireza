@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 const SingalUser = ({ data, index }) => {
-  const { username, email, emailVerified, role, createdAt, ip, _id} = data;
+  const { username, email, emailVerified, role, createdAt, ip, _id, userProfilePic} = data;
 
     const queryClient = useQueryClient();
     const {mutate: deleteUserMutate, isLoading} = useMutation({
@@ -41,7 +41,13 @@ const SingalUser = ({ data, index }) => {
         <td>
             <div className="flex items-baseline justify-start relative">
                 <div className="w-10 h-10 gap-2 absolute top-1">
-                    <div className="w-full h-full rounded-full grid place-content-center bg-pink-500 font-bold text-white text-xl ">{username.slice(0,1).toUpperCase()}</div>
+                    <div className="w-full h-full rounded-full grid place-content-center bg-pink-500 font-bold text-white text-xl ">
+                        {
+                            userProfilePic ?
+                            <img src={userProfilePic} alt={username} className="w-full h-full object-cover rounded-full"/> :
+                            username.slice(0,1).toUpperCase()
+                        }
+                    </div>
                 </div>
                 <div className="w-full p-2 pl-12">
                     <p className="text-md leading-4">{username}</p>

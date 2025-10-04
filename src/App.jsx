@@ -16,6 +16,7 @@ import Dashboard from './components/admin/Dashboard';
 import Logs from './components/admin/Logs';
 import Users from "./components/admin/Users";
 import UserPage from "./components/admin/UserPage";
+import Account from "./components/Account";
 
 function App() {
 
@@ -29,12 +30,13 @@ function App() {
         <Route path="/blogs" element={<Blog/>} />
         <Route path="/sign" element={<SignForm/>} />
         <Route path="/resend" element={<ResendCodePage/>} />
+        <Route path="/account" element={<Account/>} />
         <Route path="/*" element={<NotFound/>} />
       </Route>
       <Route path="/admin" element={
-        // <RequireAuth>
+        <RequireAuth>
           <AdminLayout/>
-        // </RequireAuth>
+        </RequireAuth>
       }>
         <Route path="/admin" element={<Dashboard/>} />
         <Route path="/admin/logs" element={<Logs/>} />

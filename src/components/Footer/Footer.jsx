@@ -6,9 +6,22 @@ import { MdPhoneAndroid } from "react-icons/md";
 import { BiSolidMap } from "react-icons/bi";
 
 import social from "../../data/social";
+import { useEffect, useState } from "react";
 
 
 const Footer = () => {
+
+    const [logedIn, setLogedIn] = useState(false);
+
+    useEffect(() => {
+        const accessToken = sessionStorage.getItem('accessToken');
+        if (accessToken) {
+            setLogedIn(true);
+        } else {
+            setLogedIn(false);
+        }
+    }, [])
+
   return (
     <div className='w-full bg-black/80'>
         <div className="lg:w-11/12 w-full mx-auto flex justify-around flex-wrap py-10">
@@ -29,13 +42,27 @@ const Footer = () => {
                 </ul>
             </div>
             <div className='lg:w-1/4 md:w-1/2 w-full p-4'>
-                <h1 className="text-2xl text-white font-bold mb-4">NewsLetter</h1>
-                <p className='text-md text-white/80 text-justify'>
-                Please Sign-Up to get a Newsletter account and be noticeable when there is a new post.
-                </p>
-                <div className=" relative w-full my-6">
-                    <Link to={'/sign'} className="block w-full py-2 text-center text-xl text-black/80 bg-white/90 rounded-full border-2 border-white/90 hover:bg-transparent hover:text-white/90 transition duration-500">Sign Up</Link>
-                </div>
+                {!logedIn ? (
+                    <>
+                        <h1 className="text-2xl text-white font-bold mb-4">NewsLetter</h1>
+                        <p className='text-md text-white/80 text-justify'>
+                        Please Sign-Up to get a Newsletter account and be noticeable when there is a new post.
+                        </p>
+                        <div className=" relative w-full my-6">
+                            <Link to={'/sign'} className="block w-full py-2 text-center text-xl text-black/80 bg-white/90 rounded-full border-2 border-white/90 hover:bg-transparent hover:text-white/90 transition duration-500">Sign In</Link>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <h1 className="text-2xl text-white font-bold mb-4">Account</h1>
+                        <p className='text-md text-white/80 text-justify'>
+                        Click the button below to access your account and manage your preferences.
+                        </p>
+                        <div className=" relative w-full my-6">
+                            <Link to={'/account'} className="block w-full py-2 text-center text-xl text-black/80 bg-white/90 rounded-full border-2 border-white/90 hover:bg-transparent hover:text-white/90 transition duration-500">Account</Link>
+                        </div>
+                    </>
+                )}
             </div>
             <div className='lg:w-1/4 md:w-1/2 w-full p-4'>
                 <h1 className="text-2xl text-white font-bold mb-4">Contact Me</h1>
@@ -46,7 +73,7 @@ const Footer = () => {
                     </div>
                     <div className="w-11/12 mx-auto lg:border-b-2 border-b lg:border-white/80 border-white/40 text-xl flex gap-4 items-center justify-start p-2">
                         <IoMail className="text-white text-2xl" />
-                        <a href="mailto:alirezaahmadi008hero@gmail.com" className="text-white/80 text-md">alirezaahmadi_00...</a>
+                        <a href="mailto:admin@ali-reza.dev" className="text-white/80 text-md">admin@ali-reza.dev</a>
                     </div>
                     <div className="w-11/12 mx-auto lg:border-b-2 border-b lg:border-white/80 border-white/40 text-xl flex gap-4 items-center justify-start p-2">
                         <BiSolidMap className="text-white text-2xl" />

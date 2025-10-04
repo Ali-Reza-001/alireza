@@ -7,9 +7,6 @@ import DOMAIN from './Domain';
 
 const axiosPrivate = axios.create({
   baseURL: DOMAIN.BackEnd,
-  headers: {
-    'Content-Type': 'application/json',
-  },
   withCredentials: true, 
 });
 
