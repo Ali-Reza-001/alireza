@@ -17,8 +17,10 @@ const Footer = () => {
         const accessToken = sessionStorage.getItem('accessToken');
         if (accessToken) {
             setLogedIn(true);
+            console.log('User is logged in');
         } else {
             setLogedIn(false);
+            console.log('User is logged in');
         }
     }, [])
 
