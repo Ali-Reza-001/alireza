@@ -82,7 +82,13 @@ const UploadModal = ({setModalOpen}) => {
                                 <img src={URL.createObjectURL(selectedFile)} alt="Preview" className="w-32 h-32 overflow-hidden rounded-full" />
                                 <div>
                                     <p className="pl-4 text-lg">{selectedFile.name?.slice(0,32)}</p>
-                                    <p className="pl-4 text-sm text-white/80">{(selectedFile.size / 1024).toFixed(2)} KB</p>
+                                    <p className="pl-4 text-sm text-white/80">
+                                    {
+                                        selectedFile.size < 1024 ? (selectedFile.size) + 'B' :
+                                        selectedFile.size < 1048576 ? (selectedFile.size / 1024).toFixed(2) + 'KB' :
+                                        (selectedFile.size / 1048576).toFixed(2) + 'MB'
+                                    } 
+                                    </p>
                                 </div>
                             </div>
                             <div className="w-full mt-4 flex justify-end items-center px-8">
