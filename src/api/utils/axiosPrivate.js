@@ -2,9 +2,6 @@ import axios from 'axios';
 import { getRefreshToken } from '../../utils/refresh';
 import DOMAIN from './Domain';
 
-
-
-
 const axiosPrivate = axios.create({
   baseURL: DOMAIN.BackEnd,
   withCredentials: true, 
@@ -26,7 +23,7 @@ axiosPrivate.interceptors.request.use(
 axiosPrivate.interceptors.response.use(
   (response) => response,
   async (error) => {
-    console.log(error.response?.data?.message)
+    console.log(error.response?.data)
     const originalRequest = error.config;
 
     if (

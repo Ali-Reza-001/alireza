@@ -6,23 +6,28 @@ import { MdPhoneAndroid } from "react-icons/md";
 import { BiSolidMap } from "react-icons/bi";
 
 import social from "../../data/social";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import axiosPrivate from "../../api/utils/axiosPrivate";
 
 
 const Footer = () => {
 
-    const [logedIn, setLogedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
-    useEffect(() => {
+    const flag = useRef(true);
+
+    const handleStatus = async () => {
         const accessToken = sessionStorage.getItem('accessToken');
-        if (accessToken) {
-            setLogedIn(true);
+        if (accessToken && flag.current) {
+            setLoggedIn(true);
             console.log('User is logged in');
-        } else {
-            setLogedIn(false);
-            console.log('User is logged in');
+            flag.current = false;
+        } else if (flag.current) {
+            const res = await axiosPrivate.get('/api').catch(err => console.error(err));
         }
-    }, [])
+    }
+
+    handleStatus();
 
   return (
     <div className='w-full bg-black/80'>
@@ -44,7 +49,7 @@ const Footer = () => {
                 </ul>
             </div>
             <div className='lg:w-1/4 md:w-1/2 w-full p-4'>
-                {!logedIn ? (
+                {!loggedIn ? (
                     <>
                         <h1 className="text-2xl text-white font-bold mb-4">NewsLetter</h1>
                         <p className='text-md text-white/80 text-justify'>

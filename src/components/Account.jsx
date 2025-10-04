@@ -6,18 +6,21 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { uploadUserPic } from "../api/user/uploadPic";
 import { getUser } from "../api/admin/users";
+import { IoCamera } from "react-icons/io5";
 
 const UploadModal = ({setModalOpen}) => {
 
     const [selectedFile, setSelectedFile] = useState(null);
+    const [isLoading, setIsLoading] = useState(null);
     
     const queryClient = useQueryClient();
-    const {mutate: uploadPic, isLoading, isError, isSuccess, error} = useMutation({
+    const {mutate: uploadPic, isError, isSuccess, error} = useMutation({
         mutationFn: (formData) => uploadUserPic(formData),
         onSuccess: (res) => {
             console.log(res);
-            queryClient.invalidateQueries({queryKey: ['uploadPic']});
-            location.reload();
+            queryClient.invalidateQueries({queryKey: ['users']});
+            setIsLoading(false);
+            setTimeout(() => {setModalOpen(false);}, 2000);
         },
         onError: (err) => {console.error('Upload failed :', err)}
     });
@@ -31,6 +34,7 @@ const UploadModal = ({setModalOpen}) => {
         if (!selectedFile) return;
         const formData = new FormData();
         formData.append('selectedFile', selectedFile);
+        setIsLoading(true);
         uploadPic(formData);
     }
 
@@ -108,11 +112,11 @@ const Account = () => {
             <div className="lg:w-[80%] w-full lg:bg-white/20 mx-auto lg:rounded-[2rem] px-10 py-10 flex lg:flex-row flex-col">
                 <div className="lg:w-1/3 w-full lg:pb-0 pb-4 lg:mb-0 mb-4 lg:border-b-0 border-b-2 lg:border-r-2 border-white/50 lg:pr-10">
                     <div className="w-48 h-48 mx-auto relative">
-                        <div className="w-full h-full rounded-full border-8 border-gray-600 text-7xl font-bold bg-pink-600 flex items-center justify-center text-white">
+                        <div className="w-full h-full rounded-full border-8 border-gray-600 text-7xl font-bold bg-gray-400 flex items-center justify-center text-white">
                             {
                                 userProfilePic ?
                                 <img src={userProfilePic} alt={username} className="w-full h-full object-cover rounded-full"/> :
-                                username ? username.charAt(0).toUpperCase() : '?'
+                                <IoCamera />
                             }
                         </div>
                         {!userProfilePic && <div className="absolute bg-white text-black/80 p-2 text-2xl rounded-full top-2 right-2 flex cursor-pointer">

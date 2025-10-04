@@ -30,10 +30,11 @@ const SignForm = () => {
       if(signing === 'in') {
         sessionStorage.setItem( 'accessToken' , result?.accessToken);
         setTimeout(() => {navigate('/');}, 2000);
+        console.log('User logged in:', result);
       } else {
         setTimeout(() => {navigate('/resend');}, 2000);
+        console.log('User registered:', result);
       }
-      console.log('User registered:', result);
     }
   };
 
