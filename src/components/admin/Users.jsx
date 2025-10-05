@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 const SingalUser = ({ data, index }) => {
-  const { username, email, emailVerified, role, createdAt, ip, _id, userProfilePic} = data;
+  const { username, email, emailVerified, role, createdAt, ip, _id, userProfilePic, ipInfo} = data;
 
     const queryClient = useQueryClient();
     const {mutate: deleteUserMutate, isLoading} = useMutation({
@@ -55,7 +55,7 @@ const SingalUser = ({ data, index }) => {
                 </div>
             </div>
         </td>
-        <td>{ip}</td>
+        <td>{ip || ipInfo.ip}</td>
         <td >
             <p className={emailVerified ? 'verified' : 'unverified'}>{emailVerified ? 'Verified' : 'Unverified'}</p>
         </td>
