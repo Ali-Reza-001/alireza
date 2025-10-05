@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import BorderSec from "../assets/BorderSec";
-
-
 const AboutMe = () => {
   return (
     <section className='w-full relative lg:bg-[url("/bg.webp")] bg-[url("/bgMobile.webp")] bg-contain'>
