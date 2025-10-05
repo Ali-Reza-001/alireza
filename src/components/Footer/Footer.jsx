@@ -92,11 +92,11 @@ const Footer = () => {
         <div className="w-full flex items-center">
             <hr className="w-full h-[2px] bg-white/50"/>
             <div className=" flex justify-around mx-8">
-                <a href={social.facebook} aria-label="facebook"><FaFacebook className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
-                <a href={social.whatsapp} aria-label="whatsapp"><FaWhatsapp className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
-                <a href={social.linkedin} aria-label="linkedin"><FaLinkedin className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
-                <a href={social.github} aria-label="github"><FaGithub className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
-                <a href={social.freelancer} aria-label="freelancer"><SiFreelancer className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.facebook} target="_blank" rel="noopener noreferrer nofollow" title="Alireza on facebook" aria-label="facebook"><FaFacebook className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.whatsapp} target="_blank" rel="noopener noreferrer nofollow" title="Alireza on whatsapp" aria-label="whatsapp"><FaWhatsapp className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.linkedin} target="_blank" rel="noopener noreferrer nofollow" title="Alireza on linkedin" aria-label="linkedin"><FaLinkedin className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.github} target="_blank" rel="noopener noreferrer nofollow" title="Alireza on github" aria-label="github"><FaGithub className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
+                <a href={social.freelancer} target="_blank" rel="noopener noreferrer nofollow" title="Alireza on freelancer" aria-label="freelancer"><SiFreelancer className="text-3xl transition-all duration-500 text-white/60 mx-2 hover:text-white"/></a>
             </div>
             <hr className="w-full h-[2px] bg-white/50"/>
         </div>

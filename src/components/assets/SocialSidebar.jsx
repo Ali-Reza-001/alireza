@@ -18,7 +18,7 @@ const SocialIcon = ({Data}) => {
 
     return (
         <div className="w-20 h-20 grid place-content-center socialMove translate-x-[100%]" style={{animationDelay: `${delay}`}}>
-            <a aria-label={aria} href={link} className={` hover:text-white transition-all duration-300`}>
+            <a aria-label={aria} href={link} target="_blank" rel="noopener noreferrer nofollow" title={`Alireza on ${aria}`} className={` hover:text-white transition-all duration-300`}>
                 <Icon/>
             </a>
         </div>
