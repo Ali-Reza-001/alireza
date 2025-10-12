@@ -24,7 +24,7 @@ const RequireAuth = ({ children, role }) => {
     };
 
     checkAuth();
-  }, [navigate, location]);
+  }, []);
 
   if (isAllowed === null) return <Spinner/>;
   return children;

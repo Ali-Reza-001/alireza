@@ -17,6 +17,7 @@ import Logs from './components/admin/Logs';
 import Users from "./components/admin/Users";
 import UserPage from "./components/admin/UserPage";
 import Account from "./components/Account";
+import EditUser from "./components/admin/EditUser";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/admin/logs" element={<Logs/>} />
         <Route path="/admin/users" element={<Users/>} />
         <Route path="/admin/user/:id" element={<UserPage/>} />
+        <Route path="/admin/edit-user/:id" element={<EditUser/>} />
       </Route>
     </Routes>
   )

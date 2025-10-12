@@ -44,7 +44,7 @@ const SingalUser = ({ data, index }) => {
                     <div className="w-full h-full rounded-full grid place-content-center bg-pink-500 font-bold text-white text-xl ">
                         {
                             userProfilePic ?
-                            <img src={userProfilePic} alt={username} className="w-full h-full object-cover rounded-full"/> :
+                            <img src={`${userProfilePic}?tr=w-512,h-512,f-webp`} alt={username} className="w-full h-full object-cover rounded-full border-2 border-gray-500"/> :
                             username.slice(0,1).toUpperCase()
                         }
                     </div>
@@ -63,9 +63,9 @@ const SingalUser = ({ data, index }) => {
         <td>{KabulDate}</td>
         <td>
             <div className="flex gap-1 items-center justify-start ">
-                <div className="p-1 rounded-xl hover:bg-black/20 bg-black/10 transition-all duration-200 cursor-pointer" title="edit">
+                <Link to={`/admin/edit-user/${_id}`} className="p-1 rounded-xl hover:bg-black/20 bg-black/10 transition-all duration-200 cursor-pointer" title="edit">
                     <CiEdit className="text-2xl"/>
-                </div>
+                </Link>
                 <div className="p-1 rounded-xl hover:bg-red-200 bg-red-100 transition-all duration-200 cursor-pointer text-red-500" title="delete" onClick={() => handleDelete(_id)}>
                     <MdOutlineDeleteOutline className="text-2xl"/>
                 </div>

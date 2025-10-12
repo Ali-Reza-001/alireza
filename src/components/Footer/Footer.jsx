@@ -16,18 +16,23 @@ const Footer = () => {
 
     const flag = useRef(true);
 
-    const handleStatus = async () => {
-        const accessToken = sessionStorage.getItem('accessToken');
-        if (accessToken && flag.current) {
-            setLoggedIn(true);
-            console.log('User is logged in');
-            flag.current = false;
-        } else if (flag.current) {
-            const res = await axiosPrivate.get('/api').catch(err => console.error(err));
-        }
-    }
+    useEffect(() => {
+        const handleStatus = async () => {
+            const accessToken = sessionStorage.getItem('accessToken');
+            if (accessToken) {
+                setLoggedIn(true);
+                console.log('User is logged in');
+            } else {
+            try {
+                await axiosPrivate.get('/api/auth/check');
+            } catch (err) {
+                console.error(err);
+            }
+            }
+        };
 
-    handleStatus();
+        handleStatus();
+    }, []);
 
   return (
     <div className='w-full bg-black/80'>

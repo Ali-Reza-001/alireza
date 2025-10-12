@@ -13,7 +13,7 @@ const AsideItemsCon = ({data}) => {
   link === location.pathname ? active = true : active = false;
 
   return (
-    <Link to={link} className={`w-full mx-auto p-2 flex justify-start gap-4 items-center rounded-xl transition-all duration-300 hover:bg-black/10 cursor-pointer ${active ? 'activeItem' : ''}`}>
+    <Link to={link} className={`w-full mx-auto mb-1 p-2 flex justify-start gap-4 items-center rounded-xl transition-all duration-300 hover:bg-black/10 cursor-pointer ${active ? 'activeItem' : ''}`}>
         <Icon className="text-2xl"/>
         <p>{name}</p>
     </Link>

@@ -12,7 +12,7 @@ const Layout = () => {
     const [open, setOpen] = useState(null);
 
     return (
-        <div className='w-full h-screen bg-white text-black'>
+        <div className='lg:w-full w-[1400px] overflow-auto h-screen bg-white text-black'>
             <header className='w-full z-[9999] font-en'>
                 <Header open={open} setOpen={setOpen} />
             </header>

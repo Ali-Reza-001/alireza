@@ -11,6 +11,11 @@ export const getAllUsers = async () => {
   return res.data;
 };
 
+export const updateUser = async ({id, updatedUser}) => {
+  const res = await axiosPrivate.put(`/api/usersControl/${id}`, updatedUser);
+  return res.data;
+};
+
 export const deleteUser = async (_id) => {
   const res = await axiosPrivate.delete('/api/usersControl', {data: {id: _id}});
   return res.data;

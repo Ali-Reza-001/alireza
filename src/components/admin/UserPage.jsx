@@ -27,7 +27,7 @@ const UserPage = () => {
                     <div className="w-1/2 aspect-square bg-pink-600 text-9xl text-white grid place-content-center mx-auto rounded-full border-8 border-green-400 my-6">
                         {
                             userProfilePic ?
-                            <img src={userProfilePic} alt={username} className="w-full h-full object-cover rounded-full"/> :
+                            <img src={`${userProfilePic}?tr=w-512,h-512,f-webp`} alt={username} className="w-full h-full object-cover rounded-full"/> :
                             username.charAt(0).toUpperCase()
                         } 
                     </div>
@@ -35,7 +35,7 @@ const UserPage = () => {
                     <div className="w-full p-4 py-8">
                         <p className="flex items-center">
                             <MdEmail className="text-2xl"/>
-                            <span className="pl-4 text-xl">{email}</span>
+                            <span className={`pl-4 ${email.length > 20 ? 'text-md' : 'text-xl'}`}>{email.length > 30 ? email.slice(0,30) : email}</span>
                         </p>
                         <p className="flex items-center">
                             <FaUserTag className="text-2xl"/>
