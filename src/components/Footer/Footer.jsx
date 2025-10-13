@@ -23,11 +23,11 @@ const Footer = () => {
                 setLoggedIn(true);
                 console.log('User is logged in');
             } else {
-            try {
-                await axiosPrivate.get('/api/auth/check');
-            } catch (err) {
-                console.error(err);
-            }
+                try {
+                    await axiosPrivate.get('/api/auth/check');
+                } catch (err) {
+                    console.error(err);
+                }
             }
         };
 

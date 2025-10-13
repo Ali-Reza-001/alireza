@@ -27,6 +27,7 @@ const Aside = ({open, setOpen}) => {
                 <Link to="/skills" onClick={() => setOpen(false)} className="w-11/12 mx-auto px-2 pb-2 border-b border-white/30 hover:underline">Skills</Link>
                 <Link to="/projects" onClick={() => setOpen(false)} className="w-11/12 mx-auto px-2 pb-2 border-b border-white/30 hover:underline">Projects</Link>
                 <Link to="/blogs" onClick={() => setOpen(false)} className="w-11/12 mx-auto px-2 pb-2 border-b border-white/30 hover:underline">Blogs</Link>
+                <Link to="/account" onClick={() => setOpen(false)} className="w-11/12 mx-auto px-2 pb-2 border-b border-white/30 hover:underline">Account</Link>
             </nav>
       </div>
     </>
