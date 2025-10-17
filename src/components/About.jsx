@@ -5,18 +5,18 @@ const About = () => {
     <section className="w-full min-h-screen pt-16 bg-black/80 text-white">
       <BreadCrumb title={'About Me'}/>
 
-      <div className="lg:w-10/12 mx-auto w-full px-6 py-20">
+      <div className="lg:w-10/12 mx-auto w-full lg:px-6 px-3 py-20">
 
         <div className="flex flex-wrap">
-          <div className="lg:w-1/2 md:w-10/12 w-full mx-auto">
+          <div className="lg:w-2/5 md:w-10/12 w-full mx-auto">
             <div className="w-full md:px-12">
-              <img src="profile.webp" alt="Profile" className="rounded-[5rem] rounded-br-2xl" />
+              <img src="about.webp" alt="Profile" className="rounded-[5rem] rounded-br-2xl" />
             </div>
           </div>
 
-          <div className=" py-10 lg:w-1/2 md:w-10/12 w-full mx-auto">
+          <div className=" py-10 lg:w-3/5 md:w-10/12 w-full mx-auto">
             <h1 className="text-4xl font-bold mb-6">About Me</h1>
-            <p className="text-lg leading-relaxed mb-8">
+            <p className="relative text-lg leading-relaxed mb-8 before:content-[''] before:block before:w-96 before:h-96 before:bg-white/10 before:mb-4 before:absolute before:top-40 before:-right-10 before:rounded-full">
               I'm Alireza Ahmadi, a freelance MERN stack developer and WordPress designer based in Kabul, Afghanistan. I craft scalable web experiences that blend clean design with purposeful functionality.
             </p>
             <p className="text-lg leading-relaxed mb-8">

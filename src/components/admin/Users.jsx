@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getAllUsers, deleteUser } from '../../api/admin/users';
 import { CiEdit } from "react-icons/ci";
@@ -8,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 const SingalUser = ({ data, index }) => {
-  const { username, email, emailVerified, role, createdAt, ip, _id, userProfilePic, ipInfo} = data;
+  const { username, email, emailVerified, role, createdAt, ip, _id, userProfilePic, ipInfo, isOnline} = data;
 
     const queryClient = useQueryClient();
     const {mutate: deleteUserMutate, isLoading} = useMutation({
@@ -41,11 +40,16 @@ const SingalUser = ({ data, index }) => {
         <td>
             <div className="flex items-baseline justify-start relative">
                 <div className="w-10 h-10 gap-2 absolute top-1">
-                    <div className="w-full h-full rounded-full grid place-content-center bg-pink-500 font-bold text-white text-xl ">
+                    <div className="relative w-full h-full rounded-full grid place-content-center bg-pink-500 font-bold text-white text-xl ">
                         {
                             userProfilePic ?
-                            <img src={`${userProfilePic}?tr=w-512,h-512,f-webp`} alt={username} className="w-full h-full object-cover rounded-full border-2 border-gray-500"/> :
+                            <img src={`${userProfilePic}?tr=w-512,h-512,f-webp`} alt={username} className={`w-full h-full object-cover rounded-full border-2 border-gray-500 `}/> :
                             username.slice(0,1).toUpperCase()
+                        }
+                        {
+                            isOnline && (
+                                <span className="Active"></span>
+                            )
                         }
                     </div>
                 </div>

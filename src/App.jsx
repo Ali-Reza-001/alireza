@@ -1,4 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { io } from 'socket.io-client';
+import DOMAIN from './api/utils/Domain';
 
 import Layout from "./components/Layout";
 import Home from "./components/Home";
@@ -20,6 +23,36 @@ import Account from "./components/Account";
 import EditUser from "./components/admin/EditUser";
 
 function App() {
+
+  const socketRef = useRef(null);
+  useEffect(() => {
+    if (!socketRef.current) {
+      const accessToken = sessionStorage.getItem('accessToken');
+      socketRef.current = io(DOMAIN.BackEnd, {
+        auth: { token: accessToken ? accessToken : '' },
+        transports: ['websocket'],
+      });
+
+      socketRef.current.on('connect', () => {
+        console.log('Connected:', socketRef.current.id);
+        // message to the backend
+        socketRef.current.emit('user-online', { accessToken });
+      });
+
+      // messages from the backend
+      socketRef.current.on('message', (data) => {
+        console.log('Received from backend:', data);
+      });
+    }
+
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+        socketRef.current = null;
+      }
+    };
+  }, []);
+
 
   return (
     <Routes>
