@@ -138,7 +138,7 @@ const EditUser = () => {
     }
 
     return (
-        <div className='w-full p-6 pt-4'>
+        <div className='w-full px-10 py-4'>
             <div className="w-full py-4 flex items-center gap-12">
                 <h2 className="w-full text-xl pl-4">Edit User : {`${data.username} (${id})`}</h2>
                 {
@@ -150,7 +150,7 @@ const EditUser = () => {
                 }
                 {isUpdatedError && <p className="w-full text-xl pl-4 text-red-500"> {`${updatedError} `}</p>}
             </div>
-            <hr className="border border-black/40"/>
+            <hr className='w-full mx-auto border-2 border-black/30 rounded-full mt-3'/>
             <div className="w-full">
                 <div className="w-full p-4 ">
                     <div className="w-full">

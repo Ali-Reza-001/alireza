@@ -3,10 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axiosPrivate from '../api/utils/axiosPrivate';
 import Spinner from '../components/assets/Spinner';
 
-const RequireAuth = ({ children, role }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [isAllowed, setIsAllowed] = useState(null); // null = loading
+const RequireAuth = ({ children }) => {
+  const [error, setError] = useState(null); 
+  const [isAllowed, setIsAllowed] = useState(false); 
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -15,18 +14,15 @@ const RequireAuth = ({ children, role }) => {
         console.log(res.data)
         setIsAllowed(true);
       } catch (err) {
-        if (err.response?.status === 403) {
-          navigate('/sign', { state: { from: location }, replace: true });
-        } else {
-          console.error('Unexpected error:', err);
-        }
-      }
+        setError(err)
+      } 
     };
 
     checkAuth();
   }, []);
 
-  if (isAllowed === null) return <Spinner/>;
+  if (!isAllowed) return <Spinner/>;
+  if (error) return <p className='text-xl p-8 text-red-500'>{error}</p>;
   return children;
 };
 

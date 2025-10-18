@@ -90,15 +90,15 @@ const Users = () => {
     });
     
     return (
-        <div className="w-full p-4">
+        <div className="lg:w-full max-w-[100vw] lg:px-10 px-4 py-4">
             <div className="w-full flex justify-start items-center">
                 <h1 className="text-2xl px-4">Users</h1>
                 <p>total ({users.length}) users</p>
             </div>
-            <hr className="w-[96%] h-[1px] border-black/40 mx-auto my-4"/>
-            <div className="w-full px-8">
+            <hr className='w-full mx-auto border-2 border-black/30 rounded-full mt-3'/>
+            <div className="lg:w-full max-w-[300vw] overflow-auto">
                 <div className="w-full">
-                    <table className="w-full" id="usersTable">
+                    <table className="w-full centeredTable">
                         <thead className="w-full border-b border-black/30">
                             <tr className=" h-10">
                                 <td>Id</td>

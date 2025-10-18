@@ -21,22 +21,22 @@ import Users from "./components/admin/Users";
 import UserPage from "./components/admin/UserPage";
 import Account from "./components/Account";
 import EditUser from "./components/admin/EditUser";
+import OfficialEmail from "./components/admin/OfficialEmail";
 
 function App() {
 
   const socketRef = useRef(null);
   useEffect(() => {
     if (!socketRef.current) {
-      const accessToken = sessionStorage.getItem('accessToken');
+      const email = localStorage.getItem('userEmail');
       socketRef.current = io(DOMAIN.BackEnd, {
-        auth: { token: accessToken ? accessToken : '' },
         transports: ['websocket'],
       });
 
       socketRef.current.on('connect', () => {
         console.log('Connected:', socketRef.current.id);
         // message to the backend
-        socketRef.current.emit('user-online', { accessToken });
+        socketRef.current.emit('user-online', { email });
       });
 
       // messages from the backend
@@ -75,6 +75,7 @@ function App() {
         <Route path="/admin" element={<Dashboard/>} />
         <Route path="/admin/logs" element={<Logs/>} />
         <Route path="/admin/users" element={<Users/>} />
+        <Route path="/admin/official-email" element={<OfficialEmail/>} />
         <Route path="/admin/user/:id" element={<UserPage/>} />
         <Route path="/admin/edit-user/:id" element={<EditUser/>} />
       </Route>

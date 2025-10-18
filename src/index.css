@@ -20,14 +20,14 @@ input:-webkit-autofill:active {
 }
 
 html, body, #root  {
-    max-width: 100vw;
-    overflow-x: hidden;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-table#usersTable td {
+table.centeredTable td {
   text-align: center
 }
-table#usersTable tr > td:nth-child(2) > div {
+table.centeredTable tr > td:nth-child(2) > div {
   text-align: left
 }
 

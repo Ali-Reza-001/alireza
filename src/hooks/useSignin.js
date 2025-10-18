@@ -18,6 +18,7 @@ const useSignin = () => {
         constUser
       });
       setSuccess(res?.data?.message);
+      localStorage.setItem('userEmail', email);
 
       return res.data; 
     } catch (err) {

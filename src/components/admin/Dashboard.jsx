@@ -16,7 +16,7 @@ const SkillBox = ({ data }) => {
   const gradient = colorMap[color] || 'from-gray-400 to-gray-800';
 
   return (
-    <div className={`lg:w-1/5 w-full relative h-32 bg-gradient-to-br shadow-2xl shadow-black/60 overflow-hidden ${gradient} rounded-xl hover:scale-105 transition-all duration-300`}>
+    <div className={`lg:w-1/5 w-full lg:mb-0 mb-2 relative h-32 bg-gradient-to-br shadow-2xl shadow-black/60 overflow-hidden ${gradient} rounded-xl hover:scale-105 transition-all duration-300`}>
       <h2 className="text-3xl text-white p-4">{name}</h2>
       <Icon className="text-[10rem] text-white/40 p-4 absolute -bottom-8 -right-8" />
       <p className="text-4xl text-white p-4 absolute bottom-1 right-1 font-semibold">{count}</p>
@@ -54,8 +54,8 @@ const Dashboard = () => {
   ]
 
   return (
-    <div className="w-full ">
-      <div className="w-full p-8 flex justify-around">
+    <div className="lg:w-full max-w-[100vw] min-h-[100vh] ">
+      <div className="w-full py-8 px-3 lg:px-8 lg:flex justify-around">
         {skills.map((skill,i) => <SkillBox data={skill} key={i} />)}
       </div>
     </div>

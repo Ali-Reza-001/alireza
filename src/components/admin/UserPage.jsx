@@ -17,14 +17,14 @@ const UserPage = () => {
     if (isLoading) return <p className=" m-10 w-8 h-8 border-2 border-black/70 rounded-full border-b-transparent animate-spin"></p>;
     if (isError) return <p className="m-10 text-xl text-red-500">{error.message}</p>;
 
-    const { username, email, emailVerified, role, createdAt, updatedAt, password, ipInfo, userProfilePic } = data;
+    const { username, email, emailVerified, role, createdAt, updatedAt, password, ipInfo, userProfilePic, isOnline } = data;
     console.log(data);
 
     return (
-        <div className='w-full p-6 pt-4 flex gap-6'>
-            <div className="w-1/3">
+        <div className='lg:w-full max-w-[100vw] lg:max-h-full h-auto overflow-auto  lg:px-6 px-3  py-10 lg:flex gap-6'>
+            <div className="lg:w-1/3 w-full">
                 <div className="w-full p-4 rounded-[2rem] shadow-2xl shadow-black/50">
-                    <div className="w-1/2 aspect-square bg-pink-600 text-9xl text-white grid place-content-center mx-auto rounded-full border-8 border-green-400 my-6">
+                    <div className={`w-1/2 aspect-square bg-pink-600 text-9xl text-white grid place-content-center mx-auto rounded-full border-4 my-6 ${isOnline ? 'border-green-500' : 'border-gray-400'}`}>
                         {
                             userProfilePic ?
                             <img src={`${userProfilePic}?tr=w-512,h-512,f-webp`} alt={username} className="w-full h-full object-cover rounded-full"/> :
@@ -44,7 +44,7 @@ const UserPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-2/3">
+            <div className="lg:w-2/3 w-full lg:my-0 my-8 ">
                 <div className="w-full h-full rounded-[2rem] shadow-2xl shadow-black/50">
                     <h2 className="w-full py-4 px-8 text-2xl">Information</h2>
                     <hr className="w-[94%] mx-auto border border-black/50"/>
@@ -53,10 +53,6 @@ const UserPage = () => {
                             <tr>
                                 <td>Username :</td>
                                 <td>{username}</td>
-                            </tr>
-                            <tr>
-                                <td>Password :</td>
-                                <td className="text-ellipsis" title={password}>{password.slice(0,50)}...</td>
                             </tr>
                             <tr>
                                 <td>Email Verified :</td>

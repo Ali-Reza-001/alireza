@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 
-import { IoMenu } from "react-icons/io5";
 import { TbLogs } from "react-icons/tb";
 import { RiDashboard3Line } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
+import { HiOutlineMailOpen } from "react-icons/hi";
+import useScreenWidth from "../../../hooks/useScreenWidth";
 
 const AsideItemsCon = ({data}) => {
   const location = useLocation();
@@ -27,17 +28,17 @@ const Aside = () => {
     {name: "Dashboard", link: "/admin", Icon: RiDashboard3Line},
     {name: "Logs", link: "/admin/logs", Icon: TbLogs},
     {name: "Users", link: "/admin/users", Icon: FaUsers},
+    {name: "Official Email", link: "/admin/official-email", Icon: HiOutlineMailOpen},
   ]
 
   return (
-    <div className="w-48 h-full fixed top-12 left-0 p-2 border-r border-black/30 shadow-[0_20px_30px_0_rgba(0,0,0,0.4),inset_10px_0_30px_10px_#fff]">
-        <h1 className="flex gap-4 text-2xl items-center mb-6">
-            <IoMenu className="text-3xl"/>
-            Menu
-        </h1>
-        <div className="w-full">
-          {asideItems.map((item, i) => <AsideItemsCon data={item} key={i} />)}
-        </div>
+    <div className="w-full h-[100vh] bg-white p-2 border-r border-black/30 shadow-[0_20px_30px_0_rgba(0,0,0,0.4),inset_10px_0_30px_20px_#fff]">
+      <h1 className="flex gap-4 text-2xl items-center mb-6 p-2">
+        Menu
+      </h1>
+      <div className="w-full">
+        {asideItems.map((item, i) => <AsideItemsCon data={item} key={i} />)}
+      </div>
     </div>
   )
 }

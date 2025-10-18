@@ -9,21 +9,30 @@ import useScreenWidth from '../../hooks/useScreenWidth';
 
 const Layout = () => {
 
-    const [open, setOpen] = useState(null);
+    const { isMobile } = useScreenWidth();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div className='lg:w-full w-[1400px] overflow-auto h-screen bg-white text-black'>
-            <header className='w-full z-[9999] font-en'>
-                <Header open={open} setOpen={setOpen} />
+        <div className='lg:w-full w-[1400px] overflow-hidden h-screen bg-white text-black'>
+            <header className='w-[100vw] z-[9999] font-en'>
+                <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             </header>
-            <aside className="w-full font-en">
-                <Aside open={open} setOpen={setOpen} />
-            </aside>
-            <main className="w-[calc(100%-12rem)] h-[calc(100vh-8rem)] absolute right-0 top-16 overflow-hidden font-en">
-                <Outlet/>
-            </main>
+            <div className="w-full flex">
+                <aside 
+                    className={
+                        !isMobile ? 
+                            "w-52 font-en" :
+                        `w-52 font-en h-[100vh] fixed top-12 z-10 transition-all duration-500 ${isMenuOpen ? 'left-0' : '-left-full'}`
+                    }
+                >
+                    <Aside isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+                </aside>
+                <main className="w-full max-h-[calc(100vh - 4rem)] overflow-hidden font-en">
+                    <Outlet/>
+                </main>
+            </div>
             <footer className='font-en w-full'>
-                <Footer/>
+                {/* <Footer/> */}
             </footer>
         </div>
     )

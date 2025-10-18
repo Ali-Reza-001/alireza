@@ -11,27 +11,11 @@ import axiosPrivate from "../../api/utils/axiosPrivate";
 
 
 const Footer = () => {
-
     const [loggedIn, setLoggedIn] = useState(false);
 
-    const flag = useRef(true);
-
     useEffect(() => {
-        const handleStatus = async () => {
-            const accessToken = sessionStorage.getItem('accessToken');
-            if (accessToken) {
-                setLoggedIn(true);
-                console.log('User is logged in');
-            } else {
-                try {
-                    await axiosPrivate.get('/api/auth/check');
-                } catch (err) {
-                    console.error(err);
-                }
-            }
-        };
-
-        handleStatus();
+        const email = localStorage.getItem('userEmail');
+        email ? setLoggedIn(true) : setLoggedIn(false)
     }, []);
 
   return (
