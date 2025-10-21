@@ -10,7 +10,11 @@ const axiosPrivate = axios.create({
 
 axiosPrivate.interceptors.request.use(
   (config) => {
+    const userLogId = sessionStorage.getItem('userLogId');
     const accessToken = sessionStorage.getItem('accessToken');
+    if (userLogId) {
+      config.headers.userLogId = userLogId;
+    }
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }

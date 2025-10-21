@@ -1,7 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useRef } from "react";
-import { io } from 'socket.io-client';
-import DOMAIN from './api/utils/Domain';
 
 import Layout from "./components/Layout";
 import Home from "./components/Home";
@@ -22,36 +19,13 @@ import UserPage from "./components/admin/UserPage";
 import Account from "./components/Account";
 import EditUser from "./components/admin/EditUser";
 import OfficialEmail from "./components/admin/OfficialEmail";
+import useSocket from "./hooks/useSocket";
+import useInitialRequest from "./hooks/useInitialRequest";
 
 function App() {
 
-  const socketRef = useRef(null);
-  useEffect(() => {
-    if (!socketRef.current) {
-      const email = localStorage.getItem('userEmail');
-      socketRef.current = io(DOMAIN.BackEnd, {
-        transports: ['websocket'],
-      });
-
-      socketRef.current.on('connect', () => {
-        console.log('Connected:', socketRef.current.id);
-        // message to the backend
-        socketRef.current.emit('user-online', { email });
-      });
-
-      // messages from the backend
-      socketRef.current.on('message', (data) => {
-        console.log('Received from backend:', data);
-      });
-    }
-
-    return () => {
-      if (socketRef.current) {
-        socketRef.current.disconnect();
-        socketRef.current = null;
-      }
-    };
-  }, []);
+  useSocket();
+  useInitialRequest();
 
 
   return (
@@ -68,9 +42,9 @@ function App() {
         <Route path="/*" element={<NotFound/>} />
       </Route>
       <Route path="/admin" element={
-        <RequireAuth>
+        // <RequireAuth>
           <AdminLayout/>
-        </RequireAuth>
+        // </RequireAuth>
       }>
         <Route path="/admin" element={<Dashboard/>} />
         <Route path="/admin/logs" element={<Logs/>} />

@@ -8,4 +8,12 @@ const axiosPublic = axios.create({
   },
 });
 
+axiosPublic.interceptors.request.use((config) => {
+  const userLogId = sessionStorage.getItem('userLogId')
+  if (userLogId) {
+    config.headers.userLogId = userLogId;
+  }
+  return config;
+})
+
 export default axiosPublic;
