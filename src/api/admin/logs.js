@@ -20,3 +20,8 @@ export const deleteLog = async (_id) => {
   const res = await axiosPrivate.delete('/api/logsControl', {data: {id: _id}});
   return res.data;
 };
+
+export const deleteAllLogs = async () => {
+  const res = await axiosPrivate.delete('/api/logsControl');
+  return res.data;
+};
