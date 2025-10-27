@@ -27,20 +27,9 @@ const HeroSection = () => {
     }, []);
 
   return (
-    <section className="w-full bg-[#333] bg-no-repeat bg-cover">
+    <section className="w-full bg-[#333] bg-[url('/heroBGV.webp')] bg-cover lg:bg-[url('/heroBG.webp')] bg-no-repeat bg-cover">
         <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
-          <LightRays
-            raysOrigin="top-center"
-            raysColor="#ffffff"
-            raysSpeed={isMobile ? 4.5 : 1.5}
-            lightSpread={isMobile ? 100 : 9.8}
-            rayLength={isMobile ? 40 : 1.2}
-            followMouse={isMobile ? false : true}
-            mouseInfluence={ isMobile ? 0 : 0.2}
-            noiseAmount={0}
-            distortion={isMobile ? 0 : 0.02}
-            className="custom-rays"
-          />
+          <div className='w-full h-full bg-black/10 backdrop-blur-sm'>
             <div className="w-full h-screen lg:flex pt-40 text-center lg:text-left absolute top-0 left-0">
                 <div className="text-white  lg:w-1/2 w-full flex justify-center flex-col lg:pl-28">
                     <p className='text-3xl text-white '> Hello, I am Alireza. <br/> And I am a ...</p>
@@ -54,14 +43,12 @@ const HeroSection = () => {
                         />
                     </h1>
                 </div>
-                <div className="lg:w-1/2 w-full lg:mt-2rem lg:mx-auto sm:mt-0 mt-14 sm:scale-100 scale-150">
-                    <DotLottieReact
-                    src="https://lottie.host/36b7a02b-2794-4b80-b053-0e4feeab66a8/GeeP20X9Dp.lottie"
-                    loop
-                    autoplay
-                    />
+                <div className="lg:w-1/2 flex w-full lg:mt-2rem lg:mx-auto sm:mt-0 mt-28 sm:scale-100 scale-150 relative">
+                    <img src="/coffee.png" alt="coffee" className='absolute lg:w-52 w-24 aspect-square top-1/3 lg:left-0 left-1/4 rotate-12 transition duration-500 animUD-1' />
+                    <img src="/laptop.png" alt="laptop" className=' transition duration-500 -scale-x-100 animUD-2 absolute left-1/4 top-0 lg:w-96 w-52 aspect-square' />
                 </div>
             </div>
+          </div>
         </div>
         <div className="absolute bottom-2 left-1/2 -ml-6 mt-10 animate-bounce text-white text-5xl">
           ↓

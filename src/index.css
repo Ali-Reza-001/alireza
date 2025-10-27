@@ -191,3 +191,22 @@ table.centeredTable tr > td:nth-child(2) > div {
   background-color: rgb(24, 190, 24);
   border: #fff 3px solid;
 }
+
+
+/* /\/\/\/\/\ || UP & DOWN ANIMATION || /\/\/\/\/\ */
+
+.animUD-1 {
+  animation: 4s upDown 0s ease-in-out infinite;
+}
+.animUD-2 {
+  animation: 4s upDown2 1s ease-in-out infinite;
+}
+
+@keyframes upDown {
+  0%, 100% { transform: translateY(0)}
+  50% { transform: translateY(-20px)}
+}
+@keyframes upDown2 {
+  0%, 100% { transform: translateY(0) scaleX(-1)}
+  50% { transform: translateY(-20px) scaleX(-1)}
+}
