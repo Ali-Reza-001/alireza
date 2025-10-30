@@ -25,7 +25,7 @@ const BlogBox = ({ data }) => {
         console.error('Failed to fetch author data : ', err);
       }
     };
-    if (authorID) fetchAuthorData();
+    // if (authorID) fetchAuthorData();
   }, [authorID]);
 
 
