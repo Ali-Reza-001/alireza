@@ -21,6 +21,7 @@ import EditUser from "./components/admin/EditUser";
 import OfficialEmail from "./components/admin/OfficialEmail";
 import useSocket from "./hooks/useSocket";
 import useInitialRequest from "./hooks/useInitialRequest";
+import UploadBlog from "./components/UploadBlog";
 
 function App() {
 
@@ -37,14 +38,15 @@ function App() {
         <Route path="/projects" element={<Projects/>} />
         <Route path="/blogs" element={<Blog/>} />
         <Route path="/sign" element={<SignForm/>} />
+        <Route path="/upload-blog" element={<UploadBlog/>} />
         <Route path="/resend" element={<ResendCodePage/>} />
         <Route path="/account" element={<Account/>} />
         <Route path="/*" element={<NotFound/>} />
       </Route>
       <Route path="/admin" element={
-        // <RequireAuth>
+        <RequireAuth>
           <AdminLayout/>
-        // </RequireAuth>
+        </RequireAuth>
       }>
         <Route path="/admin" element={<Dashboard/>} />
         <Route path="/admin/logs" element={<Logs/>} />
