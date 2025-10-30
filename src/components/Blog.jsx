@@ -99,7 +99,7 @@ const Blog = () => {
           console.error('Failed to fetch blogs : ', err);
       }
     }
-    fetchBlogs();
+    // fetchBlogs();
   }, [])
 
   return (
