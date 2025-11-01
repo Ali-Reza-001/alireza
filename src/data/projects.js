@@ -73,6 +73,15 @@ const projects = [
         link: 'https://ahac.me',
         langs: ['wordpress', 'elementor', 'mailchimp'],
     },
+    {
+        name: 'Alireza Portfolio',
+        des: 'A personal portfolio website showcasing my skills, projects, and experience as a web developer. Built with modern web technologies to ensure responsiveness and performance.',
+        date: '2025 / 8 / 21',
+        img: 'Projects/alireza.webp',
+        logo: "favicon.png",
+        link: 'https://ali-reza.dev',
+        langs: ['react', 'node', 'express', 'mongodb', 'tailwind'],
+    },
 ]
 
 export default projects;

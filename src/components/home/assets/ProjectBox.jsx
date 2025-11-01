@@ -1,5 +1,8 @@
 
 import { FaLink, FaCss3, FaElementor, FaHtml5, FaJs, FaMailchimp, FaWordpress } from "react-icons/fa6";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { FaReact, FaNodeJs } from "react-icons/fa";
+import { SiExpress, SiMongodb } from "react-icons/si";
 
 import useScreenWidth from "../../../hooks/useScreenWidth";
 
@@ -45,6 +48,11 @@ const ProjectBox = ({data}) => {
                         lang === 'html' ? <FaHtml5 className="text-2xl" key={i}/> :
                         lang === 'css' ? <FaCss3 className="text-2xl" key={i}/> :
                         lang === 'js' ? <FaJs className="text-2xl" key={i}/> :
+                        lang === 'react' ? <FaReact className="text-2xl" key={i}/> :
+                        lang === 'node' ? <FaNodeJs className="text-2xl" key={i}/> :
+                        lang === 'express' ? <SiExpress className="text-2xl" key={i}/> :
+                        lang === 'mongodb' ? <SiMongodb className="text-2xl" key={i}/> :
+                        lang === 'tailwind' ? <RiTailwindCssFill className="text-2xl" key={i}/> :
                         <FaWordpress className="text-2xl" key={i}/> 
                     )}
                 </div>

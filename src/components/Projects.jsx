@@ -1,9 +1,11 @@
-import { FaCss3, FaElementor, FaHtml5, FaJs, FaMailchimp, FaWordpress } from "react-icons/fa6";
+import { FaCss3, FaElementor, FaHtml5, FaJs, FaMailchimp, FaWordpress, FaLink } from "react-icons/fa6";
 import BreadCrumb from "./assets/BreadCrumb";
 import projects from "../data/projects";
 import { VscOrganization } from "react-icons/vsc";
 import { BsCalendar2Date } from "react-icons/bs";
-import { FaLink } from "react-icons/fa6";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { FaReact, FaNodeJs } from "react-icons/fa";
+import { SiExpress, SiMongodb } from "react-icons/si";
 
 import { Link } from "react-router-dom";
 
@@ -19,6 +21,11 @@ const LangBox = ({data}) => {
   else if (data === 'html') {Icon = FaHtml5;color = 'text-orange-600';name = 'HTML'}
   else if (data === 'css') {Icon = FaCss3;color = 'text-blue-600';name = 'CSS'}
   else if (data === 'js') {Icon = FaJs;color = 'text-yellow-400';name = 'JavaScript'}
+  else if (data === 'react') {Icon = FaReact;color = 'text-blue-400';name = 'React'}
+  else if (data === 'node') {Icon = FaNodeJs;color = 'text-green-600';name = 'Node.js'}
+  else if (data === 'express') {Icon = SiExpress;color = 'text-gray-400';name = 'Express.js'}
+  else if (data === 'mongodb') {Icon = SiMongodb;color = 'text-green-500';name = 'MongoDB'}
+  else if (data === 'tailwind') {Icon = RiTailwindCssFill;color = 'text-blue-400';name = 'Tailwind CSS'}
   else  {Icon = FaWordpress;color = 'text-blue-600';name = 'Unkown'}
 
   return (
@@ -54,7 +61,7 @@ const ProjectBox = ({data, index}) => {
       <div className="w-full">
         <div className="lg:flex">
           <div className="lg:w-1/2 w-full bg-white p-1 rounded-[2rem]">
-            <img src={img} alt={name} className="w-full rounded-[2rem]" />
+            <img src={img} alt={name} className="w-full h-full rounded-[2rem]" />
           </div>
           <div className="lg:w-1/2 w-full lg:pl-10">
             <img src={logo} alt="logo" className="h-20 bg-white/20 lg:mt-0 mt-10 px-8 py-2 mb-4 rounded-[1rem] drop-shadow-2xl brightness-125"/>
