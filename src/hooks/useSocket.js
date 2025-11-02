@@ -22,11 +22,6 @@ const useSocket = () => {
         console.log('Received from backend:', data);
       });
 
-      socketRef.current.on('userLogId', (data) => {
-        sessionStorage.setItem('userLogId', data.userLogId);
-        console.log('User log id:', data.userLogId);
-      });
-
       flag.current = false;
     }
 

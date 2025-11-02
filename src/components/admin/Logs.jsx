@@ -13,15 +13,9 @@ const LogRow = ({log, index}) => {
     return (
         <tr key={index} className="border-b border-black/30 h-10">
             <td>{new Date(log.createdAt).toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true })}</td>
-            <td>{log.user}</td>
-            <td>{log.trip.length}</td>
-            <td>
-                {log.trip.map((tripItem, i) => {
-                    if (i == log.trip.length - 1) {
-                        return tripItem.timeElapsed;
-                    }
-                })}s
-            </td>
+            <td>{log.ip}</td>
+            <td>{log.method}</td>
+            <td>{log.url}</td>
             <td title={log.device} className={'flex gap-2 items-center pt-2 justify-center'}>
                 {
                     log.device.includes('Android') ? 
@@ -80,14 +74,14 @@ const Logs = () => {
         </div>
         <hr className="w-full mx-auto border-2 border-black/30 rounded-full mt-3"/>
         <div className="w-full">
-            <div className="w-full max-h-[calc(100vh-18vh)] overflow-y-auto pt-4">
+            <div className="w-full max-h-[calc(100vh-19vh)] overflow-y-auto pt-4">
                 <table className="w-full centeredTable">
                     <thead className="w-full border-b border-black/30">
                         <tr className=" h-10">
                             <td>Date</td>
-                            <td>User</td>
-                            <td>ApiCalls</td>
-                            <td>TimeSpent</td>
+                            <td>Ip</td>
+                            <td>method</td>
+                            <td>url</td>
                             <td>Device</td>
                             <td></td>
                         </tr>
