@@ -13,7 +13,7 @@ const LogRow = ({log, index}) => {
     const {ipInfo, createdAt, method, url, device} = log;
     const country = ipInfo?.country;
     const continent = ipInfo?.continent;
-    const ip = ipInfo.ip;
+    const ip = ipInfo?.ip;
     const ispDomain = ipInfo?.as_domain;
     const isp = ipInfo?.as_name?.replace('Internet Service Provider', 'ISP');
 
