@@ -10,30 +10,40 @@ import { BsQuestionOctagon, BsThreeDotsVertical } from "react-icons/bs";
 
 const LogRow = ({log, index}) => {
 
+    const {ipInfo, createdAt, method, url, device} = log;
+    const country = ipInfo?.country;
+    const continent = ipInfo?.continent;
+    const ip = ipInfo.ip;
+    const ispDomain = ipInfo?.as_domain;
+    const isp = ipInfo?.as_name?.replace('Internet Service Provider', 'ISP');
+
     return (
         <tr key={index} className="border-b border-black/30 h-10">
-            <td>{new Date(log.createdAt).toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true })}</td>
-            <td>{log.ip}</td>
-            <td>{log.method}</td>
-            <td>{log.url}</td>
-            <td title={log.device} className={'flex gap-2 items-center pt-2 justify-center'}>
+            <td title={createdAt}>{new Date(createdAt).toLocaleString("en-US", { timeZone: "Asia/Kabul", hour12: true })}</td>
+            <td title={`${continent}, ${country}`}>{country}</td>
+            <td title={ip}>{ip}</td>
+            <td title={ipInfo?.as_name}>
+                <a href={`https://${ispDomain}`} target="_blanc">{isp}</a>
+            </td>
+            <td title={method}>{method}</td>
+            <td title={url}>{url.length <= 30 ? url : url?.slice(0,30)}</td>
+            <td title={device} className={'flex gap-2 items-center pt-2 justify-center'}>
                 {
-                    log.device.includes('Android') ? 
+                    device.includes('Android') ? 
                         <><MdPhoneAndroid className="text-xl" /><DiAndroid Linux className="text-green-600 text-xl" /></> :
-                    log.device.includes('iPhone') ? 
+                    device.includes('iPhone') ? 
                         <><MdPhoneAndroid className="text-xl" /><FaApple className="text-gray-500 text-xl" /></> :
-                    log.device.includes('iPad') ? 
+                    device.includes('iPad') ? 
                         <><FaTabletAlt className="text-xl" /><FaApple className="text-gray-500 text-xl" /></> :
-                    log.device.includes('Windows') ? 
+                    device.includes('Windows') ? 
                         <><MdLaptopMac className="text-xl" /><FaWindows className="text-blue-500 text-xl" /></> :
-                    log.device.includes('Macintosh') || log.device.includes('Mac OS') ? 
+                    device.includes('Macintosh') || device.includes('Mac OS') ? 
                         <><MdLaptopMac className="text-xl" /><FaApple className="text-gray-500 text-xl" /></> :
-                    log.device.includes('Linux') ? 
+                    device.includes('Linux') ? 
                         <><MdPhoneAndroid className="text-xl" /><FaLinux className="text-green-500 text-xl" /></> :
                     <><TbDeviceDesktopQuestion className="text-xl" /><BsQuestionOctagon className=" text-xl" /></>
                 }
             </td>
-            <td><BsThreeDotsVertical className="text-3xl rounded-lg p-1 hover:bg-black/20 cursor-pointer" /></td>
         </tr>
     )
 } 
@@ -79,11 +89,12 @@ const Logs = () => {
                     <thead className="w-full border-b border-black/30">
                         <tr className=" h-10">
                             <td>Date</td>
-                            <td>Ip</td>
+                            <td>Region</td>
+                            <td>IP</td>
+                            <td>ISP</td>
                             <td>method</td>
                             <td>url</td>
                             <td>Device</td>
-                            <td></td>
                         </tr>
                     </thead>
 
