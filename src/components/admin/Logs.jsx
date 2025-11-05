@@ -85,7 +85,7 @@ const Logs = () => {
         <hr className="w-full mx-auto border-2 border-black/30 rounded-full mt-3"/>
         <div className="w-full">
             <div className="w-full max-h-[calc(100vh-19vh)] overflow-y-auto pt-4">
-                <table className="w-full centeredTable">
+                <table className="lg:w-full w-[250vw] centeredTable">
                     <thead className="w-full border-b border-black/30">
                         <tr className=" h-10">
                             <td>Date</td>
